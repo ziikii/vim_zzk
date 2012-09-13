@@ -198,7 +198,9 @@ if &t_Co > 255
 
    hi VertSplit       ctermfg=244 ctermbg=232   cterm=bold
    hi VisualNOS                   ctermbg=238
-   hi Visual                      ctermbg=235
+   " hi Visual                      ctermbg=235
+   "v mode 下设置选择文字的背景色 
+   hi Visual          ctermfg=White            ctermbg=red
    hi WarningMsg      ctermfg=231 ctermbg=238   cterm=bold
    hi WildMenu        ctermfg=81  ctermbg=16
 
