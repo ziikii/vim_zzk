@@ -301,7 +301,6 @@ set ff=unix
 "AutoComplPop settings
 "------------------------------------------------------
 let g:acp_behaviorSnipmateLength = 1
-let g:acp_behaviorSnipmateLength=1
 let g:acp_behaviorKeywodLength = 1
 let g:acp_behaviorHtmlOmniLength = 1
 let g:acp_behaviorCssOmniPopetyLength = 1
