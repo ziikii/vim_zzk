@@ -459,7 +459,7 @@ let g:snips_author = 'jack chim <ziikii1@qq.com>'
 "autocmd FileType python set ft=python.django
 "autocmd FileType html set ft=htmldjango.html
 "" Shortcut for reloading snippets, useful when developing
-nnoremap ,smr <esc>:exec ReloadAllSnippets()<cr>
+nnoremap ,smr <esc>:exec :ReloadAllSnippets()<cr>
 
 
 "------------------------------------------------------
@@ -860,6 +860,22 @@ nmap <Leader>wse:VimwikiSearch /pattern/
     " To display all matches use |:lopen| command.
     " To display next match use |:lnext| command.
     " To display previous match use |:lprevious| command.
+
+" Split and follow 
+nmap <Leader>we <Plug>VimwikiSplitLink
+
+" Vertical split and follow 
+nmap <Leader>wq <Plug>VimwikiVSplitLink
+
+" == diary ==
+" Open diary index file 
+nmap <Leader>wi <Plug>VimwikiDiaryIndex
+
+" Open diary wiki-file for today 
+nmap <Leader>wmd <Plug>VimwikiMakeDiaryNote
+
+" Open diary wiki-file for today 
+nmap <Leader>wmdt <Plug>VimwikiTabMakeDiaryNote
 
 
 " Wiki syntax 
