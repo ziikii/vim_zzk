@@ -149,6 +149,13 @@ set showmode
 "关闭自动备份
 set nobackup
 
+" =================================================================
+" Directories for swp files
+" =================================================================
+" set backupdir=~/.vim/backup
+" set directory=~/.vim/backup
+
+
 "搜索忽略大小写 
 set ic 
 
@@ -230,6 +237,8 @@ nmap <Leader>snp :set nopaste<Cr>
 "行线
 set cursorline
 
+
+
 "解决中文乱码问题
 set encoding=utf-8
 "if has(“win32″)
@@ -238,6 +247,11 @@ set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1
 " set fileencoding=utf-8
 "endif
+
+"设置 文件dos格式或者unix 格式
+"set ff=dos
+set ff=unix
+
 
 "手动设置折叠
 " set foldmethod=manual 
@@ -285,12 +299,6 @@ map <C-g> :Grep  <C-R>=expand("<cword>")<CR> **/*.php
 " map <C-g> :vimgrep  <C-R>=expand("<cword>")<CR> **/*.php
 
 
-
-"------------------------------------------------------
-"设置 文件dos格式或者unix 格式
-"------------------------------------------------------
-"set ff=dos
-set ff=unix
 
 "------------------------------------------------------
 "光标横线
@@ -369,6 +377,17 @@ map tp :tabp<cr>
 map td :tabnew <cr>
 map te :tabedit<cr>
 map tc :tabclose<cr>
+map t1 1gt
+map t2 2gt
+map t3 3gt
+map t4 4gt
+map t5 5gt
+map t6 6gt
+map t7 7gt
+map t8 8gt
+map t9 9gt
+
+
 
 "窗口跳转
 "按住ctrl键，按一次w键，再按一次表示方向的h或j或k或l 
@@ -990,12 +1009,46 @@ endfunc
 
 
 
+" =================================================================
+" ConqueTerm
+" =================================================================
+" Usage :ConqueTerm <cmd>
+" set python versions 
+let g:ConqueTerm_PyVersion = 2
+
+" set enable fast mode 
+let g:ConqueTerm_FastMode = 1
+
+" terminal colors will always be enabled.
+let g:ConqueTerm_Color = 1
+
+" Session support 
+let g:ConqueTerm_SessionSupport = 0
+
+"Keep update terminal buffer 
+let g:ConqueTerm_ReadUnfocused = 1
+
+"Close buffer when program exits 
+let g:ConqueTerm_CloseOnEnd = 0
+
+let g:ConqueTerm_InsertOnEnter = 0
+let g:ConqueTerm_StartMessages = 0
+let g:ConqueTerm_PromptRegex = '^\w\+@[0-9A-Za-z_.-]\+:[0-9A-Za-z_./\~,:-]\+\$'
+
+let g:ConqueTerm_Syntax = 'conque_term'
+let g:ConqueTerm_EscKey = '<Esc>'
+let g:ConqueTerm_ToggleKey = '<C-F8>'
+let g:ConqueTerm_ExecFileKey = '<C-F11>'
+let g:ConqueTerm_SendFileKey = '<C-F10>'
+let g:ConqueTerm_SendVisKey = '<C-F9>'
+let g:ConqueTerm_TERM = 'xterm'
+
+" let term = conque_term#open('ping google.com', ['belowright split'])
+" call term.read(5000)
+" call term.close()
 
 
-
-
-
-" new line
+" let my_subprocess = conque_term#subprocess('tail -f /var/log/foo.log')
 
 
 
