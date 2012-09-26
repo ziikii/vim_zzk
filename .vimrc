@@ -1020,7 +1020,7 @@ let g:ConqueTerm_PyVersion = 2
 let g:ConqueTerm_FastMode = 1
 
 " terminal colors will always be enabled.
-let g:ConqueTerm_Color = 1
+let g:ConqueTerm_Color = 2
 
 " Session support 
 let g:ConqueTerm_SessionSupport = 0
@@ -1043,12 +1043,12 @@ let g:ConqueTerm_SendFileKey = '<C-F10>'
 let g:ConqueTerm_SendVisKey = '<C-F9>'
 let g:ConqueTerm_TERM = 'xterm'
 
-" let term = conque_term#open('ping google.com', ['belowright split'])
-" call term.read(5000)
-" call term.close()
 
-
-" let my_subprocess = conque_term#subprocess('tail -f /var/log/foo.log')
+"USAGE 
+:ConqueTerm <command>
+:ConqueTermSplit <command>
+:ConqueTermVSplit <command>
+:ConqueTermTab <command> 
 
 
 
