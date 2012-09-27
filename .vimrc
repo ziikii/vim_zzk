@@ -149,9 +149,9 @@ set showmode
 "关闭自动备份
 set nobackup
 
-" =================================================================
+" -----------------------------------------------------------------	
 " Directories for swp files
-" =================================================================
+" -----------------------------------------------------------------
 " set backupdir=~/.vim/backup
 " set directory=~/.vim/backup
 
@@ -174,6 +174,9 @@ set writebackup
 "自动进入当前编辑文件所在的目录
 map <leader>cd :cd %:p:h<cr>
 
+" tab键默认4空格
+set ts=4
+set expandtab
 " -----------------------------------------------------------------
 " 显示回车换行符等特殊符号	
 " -----------------------------------------------------------------
@@ -388,7 +391,6 @@ map t8 8gt
 map t9 9gt
 
 
-
 "窗口跳转
 "按住ctrl键，按一次w键，再按一次表示方向的h或j或k或l 
 "映射光标在窗口间移动的快捷键
@@ -452,6 +454,11 @@ let g:calendar_diary = "/cygdrive/e/diary"
 
 " open the Calendar
 map <F4> :Calendar<cr>
+
+
+
+
+
 
 "-----------------------------------------------------------------
 ""插入模式的移动
@@ -532,13 +539,6 @@ map <F7> <Esc>:DisablePHPFolds<Cr>
 "------------------------------------------------------
 "禁止载入 project 插件
 "let loaded_project = 1
-
-
-"------------------------------------------------------
-"设置 文件dos格式或者unix 格式
-"------------------------------------------------------
-"set ff=dos
-set ff=unix
 
 "-----------------------------------------------------------------
 "Project settings 	
@@ -637,16 +637,6 @@ nmap ,gitssh :! ssh -T git@github.com
 
 
 
-
-
-
-
-
-
-
-
-
-
 " -----------------------------------------------------------------
 " AutoCloseTag	
 "Make it so AutoCloseTag works for xml and xhtml files as well
@@ -682,6 +672,7 @@ nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 
 " -----------------------------------------------------------------
 " quickfix	
+" -----------------------------------------------------------------
 " :cc                显示详细错误信息 ( :help :cc )
 " :cp                跳到上一个错误 ( :help :cp )
 " :cn                跳到下一个错误 ( :help :cn )
@@ -776,18 +767,6 @@ inoremap jj <Esc>
 inoremap kk <Esc>
 
 " -----------------------------------------------------------------
-" ConqueTerm setting 	
-" -----------------------------------------------------------------
-" :ConqueTerm bash
-" :ConqueTerm mysql -h localhost -u joe_lunchbox Menu
-" :ConqueTerm Powershell.exe
-
-" -----------------------------------------------------------------
-" cmd.vim setting 
-" -----------------------------------------------------------------
-" :Shell <anycommand>
-
-" -----------------------------------------------------------------
 " vimwiki setting 	
 " -----------------------------------------------------------------
 
@@ -877,10 +856,10 @@ nmap <Leader>wgo :VimwikiGoto  <C-R>=expand("<cword>")<CR>
 
 nmap <Leader>wse:VimwikiSearch /pattern/
 " :VWS /pattern/
-    " Search for /pattern/ in all files of current wiki.
-    " To display all matches use |:lopen| command.
-    " To display next match use |:lnext| command.
-    " To display previous match use |:lprevious| command.
+" Search for /pattern/ in all files of current wiki.
+" To display all matches use |:lopen| command.
+" To display next match use |:lnext| command.
+" To display previous match use |:lprevious| command.
 
 " Split and follow 
 nmap <Leader>we <Plug>VimwikiSplitLink
@@ -1008,11 +987,15 @@ func! RunCode()
 endfunc
 
 
+" -----------------------------------------------------------------	
+" ConqueTerm 
+" -----------------------------------------------------------------
+" Usage 
+" :ConqueTerm <command>
+" :ConqueTermSplit <command>
+" :ConqueTermVSplit <command>
+" :ConqueTermTab <command> 
 
-" =================================================================
-" ConqueTerm
-" =================================================================
-" Usage :ConqueTerm <cmd>
 " set python versions 
 let g:ConqueTerm_PyVersion = 2
 
@@ -1033,7 +1016,7 @@ let g:ConqueTerm_CloseOnEnd = 0
 
 let g:ConqueTerm_InsertOnEnter = 0
 let g:ConqueTerm_StartMessages = 0
-let g:ConqueTerm_PromptRegex = '^\w\+@[0-9A-Za-z_.-]\+:[0-9A-Za-z_./\~,:-]\+\$'
+" let g:ConqueTerm_PromptRegex = '^\w\+@[0-9A-Za-z_.-]\+:[0-9A-Za-z_./\~,:-]\+\$'
 
 let g:ConqueTerm_Syntax = 'conque_term'
 let g:ConqueTerm_EscKey = '<Esc>'
@@ -1041,14 +1024,8 @@ let g:ConqueTerm_ToggleKey = '<C-F8>'
 let g:ConqueTerm_ExecFileKey = '<C-F11>'
 let g:ConqueTerm_SendFileKey = '<C-F10>'
 let g:ConqueTerm_SendVisKey = '<C-F9>'
-let g:ConqueTerm_TERM = 'xterm'
-
-
-"USAGE 
-:ConqueTerm <command>
-:ConqueTermSplit <command>
-:ConqueTermVSplit <command>
-:ConqueTermTab <command> 
+let g:ConqueTerm_TERM = 'vt100'
+nmap <F2> :ConqueTermSplit bash<CR>
 
 
 
