@@ -164,18 +164,28 @@ set foldmethod=syntax
 " 备份
 " -----------------------------------------------------------------
 "设置无备份文件
-set writebackup
+"set writebackup
 
 "关闭自动备份
-set nobackup
+"set nobackup
+set backup
 
 "不使用swap文件
-set noswapfile
-
-" set backupdir=~/.vim/backup
-" set directory=~/.vim/backup
+"set noswapfile
 
 
+"当前 buffer 可放在 bg 而不用写入磁盘
+set hidden
+
+" backups
+set backupdir=~/vim_backup_data/backup/
+" swap files
+set directory=~/vim_backup_data/swap/
+
+set undofile
+set undodir=~/vim_backup_data/undodir/
+set undolevels=1000
+set undoreload=10000
 
 
 
@@ -1081,6 +1091,7 @@ let g:ConqueTerm_SendFileKey = '<C-F10>'
 let g:ConqueTerm_SendVisKey = '<C-F9>'
 let g:ConqueTerm_TERM = 'vt100'
 nmap <F2> :ConqueTermSplit bash<CR>
+
 
 "-----------------------------------------------------------------    
 "vim记忆上次编辑的位置
