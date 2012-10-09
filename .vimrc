@@ -129,14 +129,6 @@ set smartindent
 ""总是显示状态栏status line
 set laststatus=2
 
-""实现CTRL-S保存操作
-imap <C-S> <Esc>:w<CR>
-
-""实现了CTRL-C、CTRL-V复制粘贴操作的映射
-nmap <C-C> yy
-" inoremap <C-V> :set paste<cr><S-Ins>
-" inoremap <c-v> <esc>"+p<CR>i
-
 "设置行号
 set number
 
@@ -152,30 +144,27 @@ set ic
 "行线
 set cursorline
 
-
 "modifiable
 set modifiable
-
-"-----------------------------------------------------------------    
-"折叠代码方式
-"-----------------------------------------------------------------
-" set foldmethod=marker
-
-
-"手动设置折叠
-" set foldmethod=manual 
-
-"设置语法折叠
-set foldmethod=syntax
-
 
 " 在输入命令时列出匹配项目
 set wildmenu
 set wildmode=list:longest
 
-
 "vim的中文双引号问题
 set ambiwidth=double 
+
+"自动进入当前编辑文件所在的目录
+map <leader>cd :cd %:p:h<cr>
+
+" tab键默认4空格
+set ts=4
+set shiftwidth=4
+set expandtab
+
+" compatible is not set
+set compatible
+
 
 " -----------------------------------------------------------------        
 " 备份
@@ -208,13 +197,29 @@ set hidden
 
 
 
-"自动进入当前编辑文件所在的目录
-map <leader>cd :cd %:p:h<cr>
+"-----------------------------------------------------------------    
+"折叠代码方式
+"-----------------------------------------------------------------
+" set foldmethod=marker
 
-" tab键默认4空格
-set ts=4
-set shiftwidth=4
-set expandtab
+"手动设置折叠
+" set foldmethod=manual 
+
+"设置语法折叠
+set foldmethod=syntax
+
+
+"-----------------------------------------------------------------    
+"copy and paste
+"-----------------------------------------------------------------
+""实现CTRL-S保存操作
+imap <C-s> <Esc>:w<CR>
+
+""实现了CTRL-C、CTRL-V复制粘贴操作的映射
+nmap <C-c> yy
+" inoremap <C-V> :set paste<cr><S-Ins>
+" inoremap <c-v> <esc>"+p<CR>i
+
 
 
 " -----------------------------------------------------------------
@@ -312,10 +317,6 @@ set fileencodings=utf-8,chinese,latin-1
 " -----------------------------------------------------------------
 "set ff=dos
 set ff=unix
-
-
-" 'compatible' is not set
-set nocompatible
 
 " -----------------------------------------------------------------        
 "matchit.vim
