@@ -170,28 +170,28 @@ set wildmode=list:longest
 " 备份
 " -----------------------------------------------------------------
 "设置无备份文件
-"set writebackup
+set writebackup
 
 "关闭自动备份
-"set nobackup
-set backup
+set nobackup
+"set backup
 
 "不使用swap文件
-"set noswapfile
+set noswapfile
 
 
 "当前 buffer 可放在 bg 而不用写入磁盘
 set hidden
 
 " backups
-set backupdir=~/vim_backup_data/backup/
-" swap files
-set directory=~/vim_backup_data/swap/
+"set backupdir=~/vim_backup_data/backup/
+"" swap files
+"set directory=~/vim_backup_data/swap/
 
-set undofile
-set undodir=~/vim_backup_data/undodir/
-set undolevels=1000
-set undoreload=10000
+"set undofile
+"set undodir=~/vim_backup_data/undodir/
+"set undolevels=1000
+"set undoreload=10000
 
 
 
@@ -1112,6 +1112,36 @@ autocmd BufReadPost *
 "PHP 字典 
 "-----------------------------------------------------------------
 "au FileType php setlocal dict+=~/.vim/dict/php_funclist.txt
+
+
+"-----------------------------------------------------------------    
+"netrw settings
+"vim scp://root@198.71.90.13//root/
+"p    Preview the file 
+"o    Enter the file/directory under the cursor  
+"-----------------------------------------------------------------
+
+
+"不使用netrw
+"let g:loaded_netrw       = 1
+"let g:loaded_netrwPlugin = 1
+
+"=0 split window 
+"=1 vertically split window 
+let g:netrw_preview  =1
+
+"cygwin 环境
+let g:netrw_cygwin = 0 
+let g:netrw_fastbrowse = 2
+let g:netrw_hide = 0
+let g:netrw_sort_by = "name"
+
+
+
+
+
+
+
 
 "=================================================================
 "个人配置结束
