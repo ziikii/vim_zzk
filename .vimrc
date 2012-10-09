@@ -275,11 +275,6 @@ let NERDCompactSexyComs=1
 
 
 
-
-
-
-
-
 " -----------------------------------------------------------------
 "配色方案
 " -----------------------------------------------------------------
@@ -375,7 +370,6 @@ map <C-g> :Grep  <C-R>=expand("<cword>")<CR> **/*.php
 " -----------------------------------------------------------------
 "AutoComplPop settings
 " -----------------------------------------------------------------
-
 let g:acp_behaviorSnipmateLength = 1
 let g:acp_behaviorKeywodLength = 1
 let g:acp_behaviorHtmlOmniLength = 1
@@ -439,6 +433,8 @@ nmap <leader>setx :set filetype=xml<Cr>
 "let g:user_zen_expandabbr_key = '<c-y>'
 "let g:use_zen_complete_tag = 1
 
+
+
 "-----------------------------------------------------------------
 "编辑按键映射	
 "-----------------------------------------------------------------
@@ -493,7 +489,6 @@ nmap <C-l> <C-w>l
 "-----------------------------------------------------------------
 "taglist settings
 "-----------------------------------------------------------------
-
 "设置F9键 打开 taglist或者关闭
 map <silent> <F9> :TlistToggle<Cr>
 
@@ -553,8 +548,7 @@ imap <C-k> <Up>
 imap <C-h> <Left>
 imap <C-l> <right>
 imap <C-o> <esc>o
-
-
+imap <C-a> <esc>a
 
 
 
