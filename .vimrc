@@ -182,7 +182,6 @@ set nobackup
 "不使用swap文件
 set noswapfile
 
-
 "当前 buffer 可放在 bg 而不用写入磁盘
 set hidden
 
@@ -513,14 +512,6 @@ let Tlist_Use_SingleClick = 1
 "Tlist_WinHeight 
 let Tlist_WinHeight = 20
 
-
-" -----------------------------------------------------------------
-" Calendar settings	
-" -----------------------------------------------------------------
-let g:calendar_diary = "/cygdrive/e/diary"
-
-" open the Calendar
-map <F4> :Calendar<cr>
 
 
 
