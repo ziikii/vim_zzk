@@ -1119,6 +1119,8 @@ autocmd BufReadPost *
 "vim scp://root@198.71.90.13//root/
 "p    Preview the file 
 "o    Enter the file/directory under the cursor  
+"t    Enter the file/directory under the cursor in a new tab 
+"<cr>   Netrw will enter the directory or read the file 
 "-----------------------------------------------------------------
 
 
