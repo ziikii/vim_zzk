@@ -596,7 +596,7 @@ map <F7> <Esc>:DisablePHPFolds<Cr>
 "-----------------------------------------------------------------
 "matchit settings
 "-----------------------------------------------------------------
-"let loaded_matchit = 1
+let loaded_matchit = 0 
 
 
 "-----------------------------------------------------------------
@@ -617,7 +617,6 @@ map <F7> <Esc>:DisablePHPFolds<Cr>
 "vcscommand.vim : CVS/SVN/SVK/git/hg/bzr integration plugin 	
 "CVSROOT should be set to something like:
 ":ext:user@host:/path_to_repository
-
 "-----------------------------------------------------------------
 
 set statusline=%<%f\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
@@ -688,6 +687,7 @@ nmap ,gs :VCSStatus
 nmap ,gu :VCSUpdate
 nmap ,gU :VCSUnlock
 nmap ,gv :VCSVimDiff
+
 
 "-----------------------------------------------------------------
 " My Git help
@@ -783,6 +783,9 @@ endfunction
 " vmap <Leader>bx :call BexecVisual()<CR>
 let bexec_outputmode='append'
 
+
+
+
 " -----------------------------------------------------------------
 " Screen setting! 	
 "  1. Edit a python file
@@ -834,6 +837,9 @@ augroup END
 "-----------------------------------------------------------------
 inoremap jj <Esc>
 inoremap kk <Esc>
+
+
+
 
 " -----------------------------------------------------------------
 " vimwiki setting 	
@@ -1013,16 +1019,6 @@ nmap -- <Plug>VimwikiRemoveHeaderLevel
 
 
 
-
-
-
-
-
-
-
-
-
-
 " -----------------------------------------------------------------
 " 编译 && 运行	
 " -----------------------------------------------------------------
@@ -1115,12 +1111,12 @@ autocmd BufReadPost *
 
 "-----------------------------------------------------------------    
 "netrw settings
+"-----------------------------------------------------------------
 "vim scp://root@198.71.90.13//root/
 "p    Preview the file 
 "o    Enter the file/directory under the cursor  
 "t    Enter the file/directory under the cursor in a new tab 
 "<cr>   Netrw will enter the directory or read the file 
-"-----------------------------------------------------------------
 
 
 "不使用netrw
@@ -1137,9 +1133,35 @@ let g:netrw_fastbrowse = 2
 let g:netrw_hide = 0
 let g:netrw_sort_by = "name"
 
+"-----------------------------------------------------------------    
+"cscope 
+"-----------------------------------------------------------------
+"if has("cscope")
+    "set csprg=/usr/local/bin/cscope
+    "set csto=0
+    "set cst
+    "set nocsverb
+    "" add any database in current directory
+    "if filereadable("cscope.out")
+        "cs add cscope.out
+    "" else add database pointed to by environment
+    "elseif $CSCOPE_DB != ""
+        "cs add $CSCOPE_DB
+    "endif
+    "set csverb
+"endif
 
-
-
+"map <C-_> :cstag <C-R>=expand("<cword>")<CR><CR>
+"map g<C-]> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
+"map g<C-\> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+"nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+"nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+"nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 
 
