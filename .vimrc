@@ -441,6 +441,22 @@ nmap <leader>setx :set filetype=xml<Cr>
 "-----------------------------------------------------------------
 "编辑按键映射	
 "-----------------------------------------------------------------
+":tabclose		Close the current tab page.
+":tabdo		Perform a command in every tab page.
+":tabedit		Edit a file in a new tab page.
+":tabnew		Open a new tab page.
+":tabfind		Search for a file and open it in a new tab page.
+":tabnext		Go to the next tab page.
+":tabprevious		Go to the previous tab page.
+":tabNext		Go to the previous tab page.
+":tabfirst		Go to the first tab page.
+":tabrewind		Go to the first tab page.
+":tablast		Go to the last tab page.
+":tabmove		Move the current tab page elsewhere.
+":tabonly		Close all other tab pages.
+":tabs			List the tab pages and the windows they contain.
+
+
 " Tab操作快捷方式!
 nmap <C-TAB> :tabnext<Cr>
 nmap <C-S-TAB> :tabpev<Cr>
@@ -1164,6 +1180,17 @@ let g:netrw_sort_by = "name"
 "nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 
+"-----------------------------------------------------------------    
+"Scrolling in Insert mode			
+"-----------------------------------------------------------------
+inoremap <C-E> <C-X><C-E>
+inoremap <C-Y> <C-X><C-Y>
+
+"-----------------------------------------------------------------    
+"Smooth scrolling					
+"-----------------------------------------------------------------
+map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
+map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 
 
 "=================================================================
