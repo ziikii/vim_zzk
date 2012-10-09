@@ -105,6 +105,7 @@ endif
 "更新 vimrc 配置
 " -----------------------------------------------------------------        
 " Edit the vimrc file
+" :echo $MYVIMRC
 map <leader>vimrc :source /home/ziikii/.vimrc<cr>
 map <leader>ev :e /home/ziikii/.vimrc<CR>
 map <leader>sv :so /home/ziikii/.vimrc<CR>
@@ -155,8 +156,15 @@ set cursorline
 "modifiable
 set modifiable
 
+"-----------------------------------------------------------------    
 "折叠代码方式
-" set fdm=marker
+"-----------------------------------------------------------------
+" set foldmethod=marker
+
+
+"手动设置折叠
+" set foldmethod=manual 
+
 "设置语法折叠
 set foldmethod=syntax
 
@@ -207,6 +215,8 @@ map <leader>cd :cd %:p:h<cr>
 set ts=4
 set shiftwidth=4
 set expandtab
+
+
 " -----------------------------------------------------------------
 " 显示回车换行符等特殊符号	
 " -----------------------------------------------------------------
@@ -274,6 +284,9 @@ let g:molokai_original = 1
 "enable 256 colors in vim 
 set t_Co=256
 
+
+
+
 " -----------------------------------------------------------------
 "设置粘贴
 " -----------------------------------------------------------------
@@ -300,9 +313,6 @@ set fileencodings=utf-8,chinese,latin-1
 "set ff=dos
 set ff=unix
 
-
-"手动设置折叠
-" set foldmethod=manual 
 
 " 'compatible' is not set
 set nocompatible
@@ -460,7 +470,7 @@ map t9 9gt
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
-map <C-l> <C-w>l
+nmap <C-l> <C-w>l
 
 
 "-----------------------------------------------------------------
@@ -523,12 +533,9 @@ let Tlist_WinHeight = 20
 "-----------------------------------------------------------------
 imap <C-j> <Down>
 imap <C-k> <Up>
-imap <A-h> <Left>
-imap <A-l> <right>
-imap <c-o> <esc>o
-
-
-
+imap <C-h> <Left>
+imap <C-l> <right>
+imap <C-o> <esc>o
 
 
 
@@ -538,8 +545,6 @@ imap <c-o> <esc>o
 "-----------------------------------------------------------------
 "snipMate settings
 "-----------------------------------------------------------------
-
-
 let g:snips_author = 'jack chim <ziikii1@qq.com>'
 "set ft=html.eruby
 "autocmd FileType python set ft=python.django
