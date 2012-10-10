@@ -126,9 +126,6 @@ set ai!
 ""智能对齐方式
 set smartindent
 
-""总是显示状态栏status line
-set laststatus=2
-
 "设置行号
 set number
 
@@ -163,7 +160,7 @@ set shiftwidth=4
 set expandtab
 
 " compatible is not set
-set compatible
+set nocompatible
 
 
 " -----------------------------------------------------------------        
@@ -209,17 +206,46 @@ set hidden
 set foldmethod=syntax
 
 
+
+
+"-----------------------------------------------------------------    
+"设置状态栏
+"-----------------------------------------------------------------
+""总是显示状态栏status line
+set laststatus=2
+
+set statusline=%<%f\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
+
+
+
+"-----------------------------------------------------------------    
+"窗口操作
+"-----------------------------------------------------------------
+" 垂直分割当前窗口
+nmap wv <C-w>v
+
+" 水平分割当前窗口
+nmap ws <C-w>s
+
+" 关闭当前窗口
+nmap wc <C-w>c
+
+
+
+
+
+
+
 "-----------------------------------------------------------------    
 "copy and paste
 "-----------------------------------------------------------------
 ""实现CTRL-S保存操作
-imap <C-s> <Esc>:w<CR>
+inoremap <C-s> <esc>:w<CR>
 
 ""实现了CTRL-C、CTRL-V复制粘贴操作的映射
 nmap <C-c> yy
-" inoremap <C-V> :set paste<cr><S-Ins>
+inoremap <C-V> <Esc><Plug>set paste<cr><S-Ins>
 " inoremap <c-v> <esc>"+p<CR>i
-
 
 
 " -----------------------------------------------------------------
@@ -362,7 +388,6 @@ map <C-g> :Grep  <C-R>=expand("<cword>")<CR> **/*.php
 " -----------------------------------------------------------------
 "光标横线
 " -----------------------------------------------------------------
-
 "highlight CursorLine guibg=lightblue ctermbg=lightgray
 
 
@@ -624,13 +649,14 @@ let loaded_matchit = 0
 "nnoremap <silent> <F3> :Grep<CR>
 "let Grep_Cygwin_Find = 1
 
+
+
+
 "-----------------------------------------------------------------
 "vcscommand.vim : CVS/SVN/SVK/git/hg/bzr integration plugin 	
 "CVSROOT should be set to something like:
 ":ext:user@host:/path_to_repository
 "-----------------------------------------------------------------
-
-set statusline=%<%f\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
 "SVN 
 let VCSCommandSVNExec = 'svn'
 " let b:VCSCommandVCSType='svn'
@@ -1010,23 +1036,6 @@ nmap -- <Plug>VimwikiRemoveHeaderLevel
 " }}}
 
 
-"-----------------------------------------------------------------
-" Browser 
-"-----------------------------------------------------------------
-" let g:vimwiki_w32_dir_enc = 'cp1251'
-
-" function! VimwikiLinkHandler(link)
-" try
-" let browser = 'C:\Program Files\Mozilla Firefox\firefox.exe'
-" execute '!start "'.browser.'" ' . a:link
-" return 1
-" catch
-" echo "This can happen for a variety of reasons ..."
-" endtry
-" return 0
-" endfunction
-
-
 
 
 
@@ -1077,11 +1086,11 @@ endfunc
 let g:ConqueTerm_PyVersion = 2
 
 " set enable fast mode 
-let g:ConqueTerm_FastMode = 1
+let g:ConqueTerm_FastMode = 0
 
 " terminal colors will always be enabled.
-let g:ConqueTerm_Color = 2
-
+let g:ConqueTerm_Color = 0
+let g:ConqueTerm_ColorMode = 'conceal'
 " Session support 
 let g:ConqueTerm_SessionSupport = 0
 
@@ -1093,7 +1102,7 @@ let g:ConqueTerm_CloseOnEnd = 0
 
 let g:ConqueTerm_InsertOnEnter = 0
 let g:ConqueTerm_StartMessages = 0
-" let g:ConqueTerm_PromptRegex = '^\w\+@[0-9A-Za-z_.-]\+:[0-9A-Za-z_./\~,:-]\+\$'
+let g:ConqueTerm_PromptRegex = '^\w\+@[0-9A-Za-z_.-]\+:[0-9A-Za-z_./\~,:-]\+\$'
 
 let g:ConqueTerm_Syntax = 'conque_term'
 let g:ConqueTerm_EscKey = '<Esc>'
@@ -1101,7 +1110,7 @@ let g:ConqueTerm_ToggleKey = '<C-F8>'
 let g:ConqueTerm_ExecFileKey = '<C-F11>'
 let g:ConqueTerm_SendFileKey = '<C-F10>'
 let g:ConqueTerm_SendVisKey = '<C-F9>'
-let g:ConqueTerm_TERM = 'vt100'
+let g:ConqueTerm_TERM = 'xterm'
 nmap <F2> :ConqueTermSplit bash<CR>
 
 
