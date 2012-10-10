@@ -214,8 +214,7 @@ set foldmethod=syntax
 ""总是显示状态栏status line
 set laststatus=2
 
-set statusline=[%<%f]\ [%{&fileformat}]\ [%{&encoding}]\ [%{strlen(&ft)?&ft:'none'}]\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
-
+set statusline=[%{&fileformat}]\ [%{&encoding}]\ [%{strlen(&ft)?&ft:'none'}]\ [%r%{getcwd()}%h%<%f]\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
 
 "-----------------------------------------------------------------    
 "窗口操作
