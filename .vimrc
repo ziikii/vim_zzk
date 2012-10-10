@@ -155,7 +155,7 @@ set ambiwidth=double
 map <leader>cd :cd %:p:h<cr>
 
 " tab键默认4空格
-set ts=4
+set tabstop=4
 set shiftwidth=4
 set expandtab
 
@@ -214,8 +214,7 @@ set foldmethod=syntax
 ""总是显示状态栏status line
 set laststatus=2
 
-set statusline=%<%f\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
-
+set statusline=[%<%f]\ [%{&fileformat}]\ [%{&encoding}]\ [%{strlen(&ft)?&ft:'none'}]\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
 
 
 "-----------------------------------------------------------------    
