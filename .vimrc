@@ -214,7 +214,19 @@ set foldmethod=syntax
 ""总是显示状态栏status line
 set laststatus=2
 
-set statusline=[%{&fileformat}]\ [%{&encoding}]\ [%{strlen(&ft)?&ft:'none'}]\ [%r%{getcwd()}%h%<%f]\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
+"set statusline=[%<%f]\ [%{&fileformat}]\ [%{&encoding}]\ [%{strlen(&ft)?&ft:'none'}]\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
+
+"显示全目录
+"set statusline+=[%r%{getcwd()}%h]
+
+"statline.vim 插件设置
+let g:loaded_statline_plugin = 1
+let g:statline_show_encoding = 1
+let g:statline_show_charcode = 0
+let g:statline_rvm = 0
+let g:statline_syntastic = 1
+
+
 
 "-----------------------------------------------------------------    
 "窗口操作
