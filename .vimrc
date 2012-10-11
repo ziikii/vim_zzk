@@ -164,7 +164,7 @@ set nocompatible
 " 备份
 " -----------------------------------------------------------------
 "设置无备份文件
-set writebackup
+"set writebackup
 
 "关闭自动备份
 set nobackup
@@ -174,7 +174,7 @@ set nobackup
 set noswapfile
 
 "当前 buffer 可放在 bg 而不用写入磁盘
-set hidden
+"set hidden
 
 " backups
 "set backupdir=~/vim_backup_data/backup/
