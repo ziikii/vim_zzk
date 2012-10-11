@@ -164,27 +164,28 @@ set nocompatible
 " 备份
 " -----------------------------------------------------------------
 "设置无备份文件
-"set writebackup
+set writebackup
 
 "关闭自动备份
-set nobackup
-"set backup
+"set nobackup
+set backup
 
 "不使用swap文件
-set noswapfile
+"set noswapfile
+set swapfile
 
 "当前 buffer 可放在 bg 而不用写入磁盘
-"set hidden
+set hidden
 
 " backups
-"set backupdir=~/vim_backup_data/backup/
+set backupdir=~/vim_backup_data/backup/
 "" swap files
-"set directory=~/vim_backup_data/swap/
+set directory=~/vim_backup_data/swap/
 
-"set undofile
-"set undodir=~/vim_backup_data/undodir/
-"set undolevels=1000
-"set undoreload=10000
+set undofile
+set undodir=~/vim_backup_data/undodir/
+set undolevels=1000
+set undoreload=10000
 
 
 
@@ -207,7 +208,7 @@ set foldmethod=manual
 "set foldmethod=indent
 
 "光标遇到折叠，折叠就打开
-"set foldopen=all
+set foldopen=all
 
 "移开折叠时自动关闭折叠
 "set foldclose=all
@@ -281,8 +282,6 @@ inoremap <C-V> <Esc><Plug>set paste<cr><S-Ins>
 " -----------------------------------------------------------------
 " 显示回车换行符等特殊符号	
 " -----------------------------------------------------------------
-" 来转换种文件格式
-" set fileformat=unix
 
 " 在默认情况下，Vim认为文件是由行组成的，并且文件最后一行是以<EOL>为结束符的。如果你想设置文件以<EOL>结束符结尾，则可以用以下命令：
 " set endofline
@@ -335,6 +334,7 @@ let NERDCompactSexyComs=1
 "配色方案
 " -----------------------------------------------------------------
 colorscheme molokai
+
 let g:molokai_original = 1
 
 "enable 256 colors in vim 
@@ -356,12 +356,7 @@ nmap <Leader>snp :set nopaste<Cr>
 "解决中文乱码问题
 " -----------------------------------------------------------------
 set encoding=utf-8
-"if has(“win32″)
-"set fileencoding=chinese
-"else
 set fileencodings=utf-8,chinese,latin-1
-" set fileencoding=utf-8
-"endif
 
 
 
@@ -464,7 +459,7 @@ autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
 "autocmd filetype php set dictionay=$VIMFILES/dict/php.dict
 
 "打开javascript折叠
-"let b:javascript_fold=1
+let b:javascript_fold=1
 
 
 
@@ -563,7 +558,7 @@ nmap <C-l> <C-w>l
 map <silent> <F9> :TlistToggle<Cr>
 
 "生成一个tags文件
-nmap <F10> <Esc>:!ctags - *<Cr> 
+nmap <F10> <Esc>:!ctags --extra=+f -R *<CR><CR>
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Auto_Open = 1
 let Tlist_Auto_Update = 1 
@@ -848,54 +843,6 @@ function! s:QuickfixToggle()
         let g:quickfix_is_open = 1
     endif
 endfunction
-" }}}
-
-
-
-" -----------------------------------------------------------------
-" Bexec : Execute script in buffer and display output in buffer	
-" \bx   or   :Bexec
-" \bx   or   :call BexecVisual()
-"
-" -----------------------------------------------------------------
-" nmap <Leader>bx :call Bexec()<CR>
-" vmap <Leader>bx :call BexecVisual()<CR>
-"let bexec_outputmode='append'
-
-
-
-
-" -----------------------------------------------------------------
-" Screen setting! 	
-"  1. Edit a python file
-" $ vim something.py
-" 2. Decide you want to run all or pieces of the code in an interactive python
-" shell
-" :ScreenShell python
-" 3. Send code from a vim buffer to the shell
-" :ScreenSend
-" 4. Quit the screen session and return to your original vim session
-" :ScreenQuit
-" or
-" :qa
-" -----------------------------------------------------------------
-function! s:ScreenShellListener()
-    if g:ScreenShellActive
-        nmap <C-c><C-c> :ScreenSend<cr>
-        nmap <C-c><C-x> :ScreenQuit<cr>
-    else
-        nmap <C-c><C-c> :ScreenShell<cr>
-    endif
-endfunction
-pwd
-
-nmap <C-c><C-c> :ScreenShell<cr>
-augroup ScreenShellEnter
-    autocmd User * call <SID>ScreenShellListener()
-augroup END
-augroup ScreenShellExit
-    autocmd User * call <SID>ScreenShellListener()
-augroup END
 
 
 
