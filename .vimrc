@@ -214,18 +214,10 @@ set foldmethod=syntax
 ""总是显示状态栏status line
 set laststatus=2
 
-"set statusline=[%<%f]\ [%{&fileformat}]\ [%{&encoding}]\ [%{strlen(&ft)?&ft:'none'}]\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
+set statusline=[%<%f]\ [%{&fileformat}]\ [%{&encoding}]\ [%{strlen(&ft)?&ft:'none'}]\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
 
 "显示全目录
 "set statusline+=[%r%{getcwd()}%h]
-
-"statline.vim 插件设置
-let g:loaded_statline_plugin = 1
-let g:statline_show_encoding = 1
-let g:statline_show_charcode = 0
-let g:statline_rvm = 0
-let g:statline_syntastic = 1
-
 
 
 "-----------------------------------------------------------------    
@@ -571,10 +563,6 @@ let Tlist_WinHeight = 20
 
 
 
-
-
-
-
 "-----------------------------------------------------------------
 ""插入模式的移动
 "-----------------------------------------------------------------
@@ -595,9 +583,6 @@ let g:snips_author = 'jack chim <ziikii1@qq.com>'
 "set ft=html.eruby
 "autocmd FileType python set ft=python.django
 "autocmd FileType html set ft=htmldjango.html
-"" Shortcut for reloading snippets, useful when developing
-nnoremap ,smr <esc>:exec :ReloadAllSnippets()<cr>
-
 
 "-----------------------------------------------------------------
 "phpfolding settings
@@ -607,6 +592,7 @@ map <F6> <Esc>:EnablePHPFolds<Cr>
 map <F7> <Esc>:DisablePHPFolds<Cr>
 "默认不显示 phpfolding
 "let g:DisableAutoPHPFolding = 1   
+
 
 " -----------------------------------------------------------------
 " bufExplorer插件的设置	
@@ -739,7 +725,7 @@ nmap ,gv :VCSVimDiff
 "-----------------------------------------------------------------
 " My Git help
 "-----------------------------------------------------------------
-nmap ,git :! git config –List
+nmap ,git :! git config --list
 nmap ,gith :! git help <verb>
 nmap ,gitr :! git remote add origin git@github.com:ziikii/n900_bay.git
 nmap ,gitp :! git push  origin master
@@ -917,6 +903,10 @@ inoremap kk <Esc>
 " <Tab> -- Find next wiki link
 " <Shift-Tab> -- Find previous wiki link 
 
+"Vimwiki 和 snipMate 的 <Tab> 热键冲突，可以将 $VIM/vimfiles/ftplugin/vimwiki.vim 中的第 293 行的 换成其他的热键
+"修改399行 更改<tab>键为<C-tab>
+
+
 " 使用鼠标映射
 let g:vimwiki_use_mouse = 1
 
@@ -1023,7 +1013,6 @@ nmap == <Plug>VimwikiAddHeaderLevel
 
 " Remove header level.
 nmap -- <Plug>VimwikiRemoveHeaderLevel
-
 
 
 
