@@ -110,6 +110,9 @@ map <leader>vimrc :source /home/ziikii/.vimrc<cr>
 map <leader>ev :e /home/ziikii/.vimrc<CR>
 map <leader>sv :so /home/ziikii/.vimrc<CR>
 
+
+
+
 "文件类型自动识别
 filetype plugin on
 filetype indent on
@@ -117,14 +120,8 @@ filetype indent on
 "语法高亮
 syntax on
 
-"自动对齐
-set autoindent
-
 "设置自动缩进
 set ai!
-
-""智能对齐方式
-set smartindent
 
 "设置行号
 set number
@@ -197,14 +194,45 @@ set hidden
 "-----------------------------------------------------------------    
 "折叠代码方式
 "-----------------------------------------------------------------
-" set foldmethod=marker
+" 标签折叠
+"set foldmethod=marker
 
 "手动设置折叠
-" set foldmethod=manual 
+set foldmethod=manual 
 
 "设置语法折叠
-set foldmethod=syntax
+"set foldmethod=syntax
 
+"缩进折叠
+"set foldmethod=indent
+
+"光标遇到折叠，折叠就打开
+"set foldopen=all
+
+"移开折叠时自动关闭折叠
+"set foldclose=all
+
+"窗口左边显示一小栏来标识各个折叠 多少列
+set foldcolumn=1
+
+" Code folding options
+" nmap <leader>f0 :set foldlevel=0<CR>
+" nmap <leader>f1 :set foldlevel=1<CR>
+" nmap <leader>f2 :set foldlevel=2<CR>
+" nmap <leader>f3 :set foldlevel=3<CR>
+" nmap <leader>f4 :set foldlevel=4<CR>
+" nmap <leader>f5 :set foldlevel=5<CR>
+" nmap <leader>f6 :set foldlevel=6<CR>
+" nmap <leader>f7 :set foldlevel=7<CR>
+" nmap <leader>f8 :set foldlevel=8<CR>
+" nmap <leader>f9 :set foldlevel=9<CR>
+
+
+"-----------------------------------------------------------------    
+"XMLFolding setting
+"-----------------------------------------------------------------
+"需要设置foldmethod=syntax
+"map <F4> :so ~/.vim/plugin/XMLFolding.vim<CR>
 
 
 
@@ -335,11 +363,15 @@ set fileencodings=utf-8,chinese,latin-1
 " set fileencoding=utf-8
 "endif
 
+
+
 " -----------------------------------------------------------------
 "设置 文件dos格式或者unix 格式
 " -----------------------------------------------------------------
 "set ff=dos
 set ff=unix
+
+
 
 " -----------------------------------------------------------------        
 "matchit.vim
@@ -352,6 +384,7 @@ let loaded_matchit = 1
 "匹配括号的规则，增加针对html的<>
 set matchpairs=(:),{:},[:],<:>
 
+
 " -----------------------------------------------------------------        
 "设置自定义的<leader>快捷键
 " -----------------------------------------------------------------        
@@ -360,18 +393,6 @@ set matchpairs=(:),{:},[:],<:>
 
 "clearing highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
-
-" Code folding options
-" nmap <leader>f0 :set foldlevel=0<CR>
-" nmap <leader>f1 :set foldlevel=1<CR>
-" nmap <leader>f2 :set foldlevel=2<CR>
-" nmap <leader>f3 :set foldlevel=3<CR>
-" nmap <leader>f4 :set foldlevel=4<CR>
-" nmap <leader>f5 :set foldlevel=5<CR>
-" nmap <leader>f6 :set foldlevel=6<CR>
-" nmap <leader>f7 :set foldlevel=7<CR>
-" nmap <leader>f8 :set foldlevel=8<CR>
-" nmap <leader>f9 :set foldlevel=9<CR>
 
 
 " -----------------------------------------------------------------
@@ -443,15 +464,38 @@ autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
 "autocmd filetype php set dictionay=$VIMFILES/dict/php.dict
 
 "打开javascript折叠
-let b:javascript_fold=1
+"let b:javascript_fold=1
 
+
+
+"-----------------------------------------------------------------    
+"set filetype
+"-----------------------------------------------------------------
 "映射转换语法。快捷键：html:,1  php:,2  javascipt,3  css,4 defalu ,5
+":set ft=nginx
 nmap <leader>seth :set filetype=html<Cr>
 nmap <leader>setc :set filetype=css<Cr>
 nmap <leader>setj :set filetype=javascipt<Cr>
 nmap <leader>setp :set filetype=php<Cr>
 nmap <leader>setd :set filetype=default<Cr>
 nmap <leader>setx :set filetype=xml<Cr>
+
+
+
+"-----------------------------------------------------------------    
+"Indent
+"-----------------------------------------------------------------
+"set g:js_indent = /location/to/javascript.vim
+
+"自动对齐
+"set autoindent
+
+""智能对齐方式
+set smartindent
+
+
+
+
 
 
 " -----------------------------------------------------------------
@@ -584,14 +628,16 @@ let g:snips_author = 'jack chim <ziikii1@qq.com>'
 "autocmd FileType python set ft=python.django
 "autocmd FileType html set ft=htmldjango.html
 
+
 "-----------------------------------------------------------------
 "phpfolding settings
 "-----------------------------------------------------------------
 map <F5> <Esc>:EnableFastPHPFolds<Cr>
 map <F6> <Esc>:EnablePHPFolds<Cr>
 map <F7> <Esc>:DisablePHPFolds<Cr>
+
 "默认不显示 phpfolding
-"let g:DisableAutoPHPFolding = 1   
+let g:DisableAutoPHPFolding = 1   
 
 
 " -----------------------------------------------------------------
@@ -603,6 +649,7 @@ map <F7> <Esc>:DisablePHPFolds<Cr>
 " let g:bufExplorerSplitVertSize = 30 
 " let g:bufExplorerUseCurrentWindow=1 
 " autocmd BufWinEnter \[Buf\ List\] setl nonumber
+
 
 " -----------------------------------------------------------------
 " winManager插件的设置	
@@ -625,6 +672,7 @@ map <F7> <Esc>:DisablePHPFolds<Cr>
 "map \luw :LUWalk<CR> 
 "map \lua :LUArgs<CR> 
 
+
 "-----------------------------------------------------------------
 "matchit settings
 "-----------------------------------------------------------------
@@ -637,8 +685,9 @@ let loaded_matchit = 0
 "禁止载入 project 插件
 "let loaded_project = 1
 
+
 "-----------------------------------------------------------------
-"Project settings 	
+"Grep settings 	
 "-----------------------------------------------------------------
 "map \p :Project<CR> 
 "grep settings
@@ -765,10 +814,13 @@ nmap <leader>fr	:FufRenewCache<CR>
 nmap <leader>pd :call PhpDocSingle()<CR>
 vmap <leader>pd :call PhpDocRange()<CR>
 
+
 " -----------------------------------------------------------------
 " JSON	
 " -----------------------------------------------------------------
 nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+
+
 
 " -----------------------------------------------------------------
 " quickfix	
@@ -805,6 +857,8 @@ function! s:QuickfixToggle()
     endif
 endfunction
 " }}}
+
+
 
 " -----------------------------------------------------------------
 " Bexec : Execute script in buffer and display output in buffer	
@@ -850,6 +904,8 @@ augroup END
 augroup ScreenShellExit
     autocmd User * call <SID>ScreenShellListener()
 augroup END
+
+
 
 " -----------------------------------------------------------------
 " bufExplorer setting 	
@@ -1092,6 +1148,8 @@ let g:ConqueTerm_TERM = 'xterm'
 nmap <F2> :ConqueTermSplit bash<CR>
 
 
+
+
 "-----------------------------------------------------------------    
 "vim记忆上次编辑的位置
 "-----------------------------------------------------------------
@@ -1167,6 +1225,8 @@ let g:netrw_sort_by = "name"
 "-----------------------------------------------------------------
 inoremap <C-E> <C-X><C-E>
 inoremap <C-Y> <C-X><C-Y>
+
+
 
 "-----------------------------------------------------------------    
 "Smooth scrolling					
