@@ -814,7 +814,7 @@ endfunction
 " -----------------------------------------------------------------
 " nmap <Leader>bx :call Bexec()<CR>
 " vmap <Leader>bx :call BexecVisual()<CR>
-let bexec_outputmode='append'
+"let bexec_outputmode='append'
 
 
 
@@ -1013,27 +1013,6 @@ nmap == <Plug>VimwikiAddHeaderLevel
 
 " Remove header level.
 nmap -- <Plug>VimwikiRemoveHeaderLevel
-
-
-
-
-" Use {{{ and }}} to define a block of preformatted text:
-" Horizontal line 
-" ----
-
-" {{{class="brush: python"
-" for i in range(1, 5):
-" print(i)
-" }}}
-
-" {{{class="brush: c++"
-" #include "helloworld.h"
-" int helloworld()
-" {
-" printf("hello world");
-" }
-" }}}
-
 
 
 
