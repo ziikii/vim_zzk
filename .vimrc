@@ -549,7 +549,6 @@ map t9 9gt
 "-----------------------------------------------------------------
 "窗口跳转
 "-----------------------------------------------------------------
-"按住ctrl键，按一次w键，再按一次表示方向的h或j或k或l 
 "映射光标在窗口间移动的快捷键
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -674,14 +673,10 @@ let g:DisableAutoPHPFolding = 1
 
 
 "-----------------------------------------------------------------
-"matchit settings
-"-----------------------------------------------------------------
-let loaded_matchit = 0 
-
-
-"-----------------------------------------------------------------
 "project settings
 "-----------------------------------------------------------------
+"map \p :Project<CR> 
+
 "禁止载入 project 插件
 "let loaded_project = 1
 
@@ -689,7 +684,6 @@ let loaded_matchit = 0
 "-----------------------------------------------------------------
 "Grep settings 	
 "-----------------------------------------------------------------
-"map \p :Project<CR> 
 "grep settings
 "nnoremap <silent> <F3> :Grep<CR>
 "let Grep_Cygwin_Find = 1
@@ -790,9 +784,7 @@ nmap ,gitssh :! ssh -T git@github.com
 " AutoCloseTag	
 "Make it so AutoCloseTag works for xml and xhtml files as well
 " -----------------------------------------------------------------
-au FileType xhtml,xml so ~/.vim/ftplugin/html_autoclosetag.vim
-" au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-"空格键折开
+au FileType xhtml,xml,html so ~/.vim/ftplugin/html_autoclosetag.vim
 
 
 " -----------------------------------------------------------------
@@ -909,6 +901,7 @@ augroup END
 
 " -----------------------------------------------------------------
 " bufExplorer setting 	
+" -----------------------------------------------------------------
 " To start exploring in the current window, use: >
 " \be   or   :BufExplorer
 " To start exploring in a newly split horizontal window, use: >
@@ -916,7 +909,6 @@ augroup END
 " To start exploring in a newly split vertical window, use: >
 " \bv   or   :BufExplorerVerticalSplit
 
-" -----------------------------------------------------------------
 
 
 
@@ -983,7 +975,7 @@ let g:vimwiki_list = [{
 let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,br,hr,div,del,code' 
 
 map <S-F11> :VimwikiAll2HTML<cr>
-map <M-F12> :exec '!cd /home/ziikii/vimwiki/ && bash sync.sh'<cr>
+map <M-F12> :!cd /home/ziikii/vimwiki/html/ && bash auto_git_push.sh<cr>
 " nmap <Leader>wd <Plug>VimwikiMakeDiaryNote
 
 " Convert current wiki page to HTML.
@@ -1049,12 +1041,12 @@ nmap <Leader>wmdt <Plug>VimwikiTabMakeDiaryNote
 " Wiki syntax 
 " Links to directories (ending with a "/") are also supported: >
 " [[/home/somebody/|Home Directory]]
-hi VimwikiHeader1 guifg=#FF0000 ctermbg=DarkBlue ctermfg=white
-hi VimwikiHeader2 guifg=#00FF00 ctermbg=Red ctermfg=white
-hi VimwikiHeader3 guifg=#0000FF ctermbg=Green ctermfg=white
-hi VimwikiHeader4 guifg=#FF00FF ctermbg=DarkCyan ctermfg=white
-hi VimwikiHeader5 guifg=#00FFFF ctermbg=DarkMagenta ctermfg=white
-hi VimwikiHeader6 guifg=#FFFF00 ctermbg=DarkGrey ctermfg=white
+hi VimwikiHeader1  ctermbg=DarkBlue ctermfg=white
+hi VimwikiHeader2  ctermbg=Red ctermfg=white
+hi VimwikiHeader3  ctermbg=Green ctermfg=white
+hi VimwikiHeader4  ctermbg=DarkCyan ctermfg=white
+hi VimwikiHeader5  ctermbg=DarkMagenta ctermfg=white
+hi VimwikiHeader6  ctermbg=DarkGrey ctermfg=white
 
 let g:vimwiki_html_header_numbering_sym = '.'
 " = Header level 1 =
