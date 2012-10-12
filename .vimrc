@@ -1,7 +1,8 @@
+" File: .vimrc 
+" Author: jack chim <ziikii1@qq.com>
+" Description: 
+" Last Modified: 十月 12, 2012
 " An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2008 Dec 17
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
@@ -16,7 +17,7 @@ endif
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
-set nocompatible
+"set nocompatible
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -26,7 +27,7 @@ if has("vms")
 else
     set backup		" keep a backup file
 endif
-set history=50		" keep 50 lines of command line history
+" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -159,33 +160,33 @@ set expandtab
 " compatible is not set
 set nocompatible
 
+" 保留历史记录
+set history=50
+
 
 " -----------------------------------------------------------------        
 " 备份
 " -----------------------------------------------------------------
-"设置无备份文件
-set writebackup
-
 "关闭自动备份
-"set nobackup
-set backup
+set nobackup
+"set backup
 
 "不使用swap文件
-"set noswapfile
-set swapfile
+set noswapfile
+"set swapfile
 
 "当前 buffer 可放在 bg 而不用写入磁盘
 set hidden
 
 " backups
-set backupdir=~/vim_backup_data/backup/
+"set backupdir=~/vim_backup_data/backup/
 "" swap files
-set directory=~/vim_backup_data/swap/
+"set directory=~/vim_backup_data/swap/
 
-set undofile
-set undodir=~/vim_backup_data/undodir/
-set undolevels=1000
-set undoreload=10000
+"set undofile
+"set undodir=~/vim_backup_data/undodir/
+"set undolevels=1000
+"set undoreload=10000
 
 
 
@@ -196,7 +197,7 @@ set undoreload=10000
 "折叠代码方式
 "-----------------------------------------------------------------
 " 标签折叠
-"set foldmethod=marker
+set foldmethod=marker
 
 "手动设置折叠
 set foldmethod=manual 
@@ -208,7 +209,7 @@ set foldmethod=manual
 "set foldmethod=indent
 
 "光标遇到折叠，折叠就打开
-set foldopen=all
+"set foldopen=all
 
 "移开折叠时自动关闭折叠
 "set foldclose=all
@@ -217,30 +218,30 @@ set foldopen=all
 set foldcolumn=1
 
 " Code folding options
-" nmap <leader>f0 :set foldlevel=0<CR>
-" nmap <leader>f1 :set foldlevel=1<CR>
-" nmap <leader>f2 :set foldlevel=2<CR>
-" nmap <leader>f3 :set foldlevel=3<CR>
-" nmap <leader>f4 :set foldlevel=4<CR>
-" nmap <leader>f5 :set foldlevel=5<CR>
-" nmap <leader>f6 :set foldlevel=6<CR>
-" nmap <leader>f7 :set foldlevel=7<CR>
-" nmap <leader>f8 :set foldlevel=8<CR>
-" nmap <leader>f9 :set foldlevel=9<CR>
+nmap <leader>f0 :set foldlevel=0<CR>
+nmap <leader>f1 :set foldlevel=1<CR>
+nmap <leader>f2 :set foldlevel=2<CR>
+nmap <leader>f3 :set foldlevel=3<CR>
+nmap <leader>f4 :set foldlevel=4<CR>
+nmap <leader>f5 :set foldlevel=5<CR>
+nmap <leader>f6 :set foldlevel=6<CR>
+nmap <leader>f7 :set foldlevel=7<CR>
+nmap <leader>f8 :set foldlevel=8<CR>
+nmap <leader>f9 :set foldlevel=9<CR>
 
 
 "-----------------------------------------------------------------    
 "XMLFolding setting
 "-----------------------------------------------------------------
 "需要设置foldmethod=syntax
-"map <F4> :so ~/.vim/plugin/XMLFolding.vim<CR>
+map <F4> :so ~/.vim/plugin/XMLFolding.vim<CR>
 
 
 
 "-----------------------------------------------------------------    
 "设置状态栏
 "-----------------------------------------------------------------
-""总是显示状态栏status line
+"总是显示状态栏status line
 set laststatus=2
 
 set statusline=[%<%f]\ [%{&fileformat}]\ [%{&encoding}]\ [%{strlen(&ft)?&ft:'none'}]\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
@@ -311,18 +312,25 @@ set nolist
 " -----------------------------------------------------------------        
 
 map nt :NERDTree<CR>
+
 "是否默认显示隐藏文件
 let NERDTreeShowHidden=1
+
 "是否默认显示行号
 let NERDTreeShowLineNumbers=1
+
 "是否默认显示书签列表
-let NERDTreeShowBookmarks = 1
+"let NERDTreeShowBookmarks = 1
+
 "打开文件后是否关闭NerdTree窗口
 let NERDTreeQuitOnOpen = 0
+
 "让Tree把自己给装饰得多姿多彩漂亮点
 " let NERDChristmasTree=1
+
 "让注释符与语句之间留一个空格
 " let NERDSpaceDelims=1 
+
 "多行注释时样子更好看
 let NERDCompactSexyComs=1  
 
@@ -398,7 +406,7 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 map <C-g> :Grep  <C-R>=expand("<cword>")<CR> **/*.php
 
 "vimgrep 
-" map <C-g> :vimgrep  <C-R>=expand("<cword>")<CR> **/*.php
+map <C-g> :vimgrep  <C-R>=expand("<cword>")<CR> **/*.php
 
 
 
@@ -441,17 +449,17 @@ let OmniCpp_MayCompleteAow = 1 " autocomplete afte ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete afte ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 " automatically open and close the popup menu / peview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif 
-set completeopt=menuone,menu,longest,preview
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-au BufNewFile,Bufread,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
-autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
+"au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif 
+"set completeopt=menuone,menu,longest,preview
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+"autocmd FileType c set omnifunc=ccomplete#Complete
+"au BufNewFile,Bufread,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
+"autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
 
 " 设置字典 ~/.vim/dict/文件的路径
 "autocmd filetype javascipt set dictionay=$VIMFILES/dict/javascipt.dict
@@ -459,7 +467,7 @@ autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
 "autocmd filetype php set dictionay=$VIMFILES/dict/php.dict
 
 "打开javascript折叠
-let b:javascript_fold=1
+"let b:javascript_fold=1
 
 
 
@@ -483,7 +491,7 @@ nmap <leader>setx :set filetype=xml<Cr>
 "set g:js_indent = /location/to/javascript.vim
 
 "自动对齐
-"set autoindent
+set autoindent
 
 ""智能对齐方式
 set smartindent
@@ -649,9 +657,9 @@ let g:DisableAutoPHPFolding = 1
 " winManager插件的设置	
 " -----------------------------------------------------------------
 " let g:winManagerWidth = 30
-" let winManagerWindowLayout = 'TagList , BufExplorer'
-" let g:defaultExplorer = 1
-" nmap <silent> <leader>wm :WMToggle<cr> 
+"let winManagerWindowLayout = 'NERDTree | BufExplorer'
+"let g:defaultExplorer = 1
+nmap <silent> <leader>wm :WMToggle<cr> 
 " let loaded_winmanager = 1
 
 
@@ -779,7 +787,7 @@ nmap ,gitssh :! ssh -T git@github.com
 " AutoCloseTag	
 "Make it so AutoCloseTag works for xml and xhtml files as well
 " -----------------------------------------------------------------
-au FileType xhtml,xml,html so ~/.vim/ftplugin/html_autoclosetag.vim
+"au FileType xhtml,xml,html so ~/.vim/ftplugin/html_autoclosetag.vim
 
 
 " -----------------------------------------------------------------
@@ -798,8 +806,8 @@ nmap <leader>fr	:FufRenewCache<CR>
 "nnoremap <C-P> :call PhpDocSingle()<CR>
 "vnoremap <C-P> :call PhpDocRange()<CR> 
 " -----------------------------------------------------------------
-nmap <leader>pd :call PhpDocSingle()<CR>
-vmap <leader>pd :call PhpDocRange()<CR>
+"nmap <leader>pd :call PhpDocSingle()<CR>
+"vmap <leader>pd :call PhpDocRange()<CR>
 
 
 " -----------------------------------------------------------------
@@ -1146,17 +1154,17 @@ let g:netrw_sort_by = "name"
     "set csverb
 "endif
 
-"map <C-_> :cstag <C-R>=expand("<cword>")<CR><CR>
-"map g<C-]> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
-"map g<C-\> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
-"nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-"nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-"nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-"nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-"nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-"nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-"nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-"nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+map <C-_> :cstag <C-R>=expand("<cword>")<CR><CR>
+map g<C-]> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
+map g<C-\> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 
 "-----------------------------------------------------------------    
