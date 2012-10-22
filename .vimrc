@@ -244,7 +244,7 @@ map <F4> :so ~/.vim/plugin/XMLFolding.vim<CR>
 "总是显示状态栏status line
 set laststatus=2
 
-set statusline=[%<%f]\ [%{&fileformat}]\ [%{&encoding}]\ [%{strlen(&ft)?&ft:'none'}]\ %{VCSCommandGetStatusLine()}\ %h%m%r%=%l,%c%V\ %P
+set statusline=[%<%f]\ [%{&fileformat}]\ [%{&encoding}]\ [%{strlen(&ft)?&ft:'none'}]\ %h%m%r%=%l,%c%V\ %P
 
 "显示全目录
 "set statusline+=[%r%{getcwd()}%h]

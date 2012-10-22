@@ -12,7 +12,7 @@ let loaded_vimwiki = 1
 let s:old_cpo = &cpo
 set cpo&vim
 
-" Logging and performance instrumentation "{{{
+" Logging and performance instrumentation 
 let g:VimwikiLog = {}
 let g:VimwikiLog.path = 0           " # of calls to VimwikiGet with path or path_html
 let g:VimwikiLog.path_html = 0      " # of calls to path_html()
@@ -20,19 +20,19 @@ let g:VimwikiLog.normalize_path = 0 " # of calls to normalize_path()
 let g:VimwikiLog.subdir = 0         " # of calls to vimwiki#base#subdir()
 let g:VimwikiLog.timing = []        " various timing measurements
 let g:VimwikiLog.html = []          " html conversion timing
-function! VimwikiLog_extend(what,...)  "{{{
+function! VimwikiLog_extend(what,...)  
   call extend(g:VimwikiLog[a:what],a:000)
-endfunction "}}}
-"}}}
+endfunction 
 
-" HELPER functions {{{
-function! s:default(varname, value) "{{{
+
+" HELPER functions 
+function! s:default(varname, value) 
   if !exists('g:vimwiki_'.a:varname)
     let g:vimwiki_{a:varname} = a:value
   endif
-endfunction "}}}
+endfunction 
 
-function! s:find_wiki(path) "{{{
+function! s:find_wiki(path) 
   " XXX: find_wiki() does not (yet) take into consideration the ext
   let path = vimwiki#u#path_norm(vimwiki#u#chomp_slash(a:path))
   let idx = 0
@@ -46,18 +46,18 @@ function! s:find_wiki(path) "{{{
   endwhile
   return -1
   " an orphan page has been detected
-endfunction "}}}
+endfunction 
 
 
-function! s:vimwiki_idx() " {{{
+function! s:vimwiki_idx() " 
   if exists('b:vimwiki_idx')
     return b:vimwiki_idx
   else
     return -1
   endif
-endfunction " }}}
+endfunction " 
 
-function! s:setup_buffer_leave() "{{{
+function! s:setup_buffer_leave() 
   if g:vimwiki_debug ==3
     echom "Setup_buffer_leave g:curr_idx=".g:vimwiki_current_idx." b:curr_idx=".s:vimwiki_idx().""
   endif
@@ -73,9 +73,9 @@ function! s:setup_buffer_leave() "{{{
   if g:vimwiki_menu != ""
     exe 'nmenu disable '.g:vimwiki_menu.'.Table'
   endif
-endfunction "}}}
+endfunction 
 
-function! s:setup_filetype() "{{{
+function! s:setup_filetype() 
   if g:vimwiki_debug ==3
     echom "Setup_filetype g:curr_idx=".g:vimwiki_current_idx." b:curr_idx=".s:vimwiki_idx().""
   endif
@@ -121,9 +121,9 @@ function! s:setup_filetype() "{{{
   endif
   let time1 = vimwiki#u#time(time0)  "XXX
   call VimwikiLog_extend('timing',['plugin:setup_filetype:time1',time1])
-endfunction "}}}
+endfunction 
 
-function! s:setup_buffer_enter() "{{{
+function! s:setup_buffer_enter() 
   if g:vimwiki_debug ==3
     echom "Setup_buffer_enter g:curr_idx=".g:vimwiki_current_idx." b:curr_idx=".s:vimwiki_idx().""
   endif
@@ -215,9 +215,9 @@ function! s:setup_buffer_enter() "{{{
   endif
   "let time2 = vimwiki#u#time(time0)  "XXX
   call VimwikiLog_extend('timing',['plugin:setup_buffer_enter:time1',time1])
-endfunction "}}}
+endfunction 
 
-function! s:setup_buffer_reenter() "{{{
+function! s:setup_buffer_reenter() 
   if g:vimwiki_debug ==3
     echom "Setup_buffer_reenter g:curr_idx=".g:vimwiki_current_idx." b:curr_idx=".s:vimwiki_idx().""
   endif
@@ -228,9 +228,10 @@ function! s:setup_buffer_reenter() "{{{
   if g:vimwiki_debug ==3
     echom "  Setup_buffer_reenter g:curr_idx=".g:vimwiki_current_idx." b:curr_idx=".s:vimwiki_idx().""
   endif
-endfunction "}}}
+endfunction 
 
-function! s:setup_cleared_syntax() "{{{ highlight groups that get cleared
+function! s:setup_cleared_syntax() 
+  highlight groups that get cleared
   " on colorscheme change because they are not linked to Vim-predefined groups
   hi def VimwikiBold term=bold cterm=bold gui=bold
   hi def VimwikiItalic term=italic cterm=italic gui=italic
@@ -241,29 +242,29 @@ function! s:setup_cleared_syntax() "{{{ highlight groups that get cleared
       execute 'hi def VimwikiHeader'.i.' guibg=bg guifg='.g:vimwiki_hcolor_guifg_{&bg}[i-1].' gui=bold ctermfg='.g:vimwiki_hcolor_ctermfg_{&bg}[i-1].' term=bold cterm=bold'
     endfor
   endif
-endfunction "}}}
+endfunction 
 
-" OPTION get/set functions {{{
+" OPTION get/set functions 
 " return complete list of options
-function! VimwikiGetOptionNames() "{{{
+function! VimwikiGetOptionNames() 
   return keys(s:vimwiki_defaults)
-endfunction "}}}
+endfunction 
 
-function! VimwikiGetOptions(...) "{{{
+function! VimwikiGetOptions(...) 
   let idx = a:0 == 0 ? g:vimwiki_current_idx : a:1
   let option_dict = {}
   for kk in keys(s:vimwiki_defaults)
     let option_dict[kk] = VimwikiGet(kk, idx)
   endfor
   return option_dict
-endfunction "}}}
+endfunction 
 
 " Return value of option for current wiki or if second parameter exists for
 "   wiki with a given index.
 " If the option is not found, it is assumed to have been previously cached in a
 "   buffer local dictionary, that acts as a cache.
 " If the option is not found in the buffer local dictionary, an error is thrown
-function! VimwikiGet(option, ...) "{{{
+function! VimwikiGet(option, ...) 
   let idx = a:0 == 0 ? g:vimwiki_current_idx : a:1
 
   if has_key(g:vimwiki_list[idx], a:option)
@@ -277,7 +278,7 @@ function! VimwikiGet(option, ...) "{{{
 
   " XXX no call to vimwiki#base here or else the whole autoload/base gets loaded!
   return val
-endfunction "}}}
+endfunction 
 
 " Set option for current wiki or if third parameter exists for
 "   wiki with a given index.
@@ -285,7 +286,7 @@ endfunction "}}}
 "   s:vimwiki_defaults), it is saved in a buffer local dictionary, that acts
 "   as a cache.
 " If the option is not found in the buffer local dictionary, an error is thrown
-function! VimwikiSet(option, value, ...) "{{{
+function! VimwikiSet(option, value, ...) 
   let idx = a:0 == 0 ? g:vimwiki_current_idx : a:1
 
   if has_key(s:vimwiki_defaults, a:option) ||
@@ -298,41 +299,41 @@ function! VimwikiSet(option, value, ...) "{{{
     let b:vimwiki_list[a:option] = a:value
   endif
 
-endfunction "}}}
+endfunction 
 
 " Clear option for current wiki or if third parameter exists for
 "   wiki with a given index.
 " Currently, only works if option was previously saved in the buffer local
 "   dictionary, that acts as a cache.
-function! VimwikiClear(option, ...) "{{{
+function! VimwikiClear(option, ...) 
   let idx = a:0 == 0 ? g:vimwiki_current_idx : a:1
 
   if exists('b:vimwiki_list') && has_key(b:vimwiki_list, a:option)
     call remove(b:vimwiki_list, a:option)
   endif
 
-endfunction "}}}
-" }}}
+endfunction 
+" 
 
-" }}}
+" 
 
-" CALLBACK functions "{{{
+" CALLBACK functions 
 " User can redefine it.
-if !exists("*VimwikiLinkHandler") "{{{
+if !exists("*VimwikiLinkHandler") 
   function VimwikiLinkHandler(url)
     return 0
   endfunction
-endif "}}}
+endif 
 
-if !exists("*VimwikiWikiIncludeHandler") "{{{
-  function! VimwikiWikiIncludeHandler(value) "{{{
+if !exists("*VimwikiWikiIncludeHandler") 
+  function! VimwikiWikiIncludeHandler(value) 
     " Return the empty string when unable to process link
     return ''
-  endfunction "}}}
-endif "}}}
-" CALLBACK }}}
+  endfunction 
+endif 
+" CALLBACK 
 
-" DEFAULT wiki {{{
+" DEFAULT wiki 
 let s:vimwiki_defaults = {}
 let s:vimwiki_defaults.path = '~/vimwiki/'
 let s:vimwiki_defaults.path_html = ''   " '' is replaced by derived path.'_html/'
@@ -366,9 +367,9 @@ let s:vimwiki_defaults.diary_link_fmt = '%Y-%m-%d'
 let s:vimwiki_defaults.custom_wiki2html = ''
 "
 let s:vimwiki_defaults.list_margin = -1
-"}}}
 
-" DEFAULT options {{{
+
+" DEFAULT options 
 call s:default('list', [s:vimwiki_defaults])
 call s:default('auto_checkbox', 1)
 call s:default('use_mouse', 0)
@@ -412,7 +413,7 @@ call s:default('current_idx', 0)
 " Scheme regexes should be defined even if syntax file is not loaded yet
 " cause users should be able to <leader>w<leader>w without opening any
 " vimwiki file first
-" Scheme regexes {{{
+" Scheme regexes 
 call s:default('schemes', 'wiki\d\+,diary,local')
 call s:default('web_schemes1', 'http,https,file,ftp,gopher,telnet,nntp,ldap,'.
         \ 'rsync,imap,pop,irc,ircs,cvs,svn,svn+ssh,git,ssh,fish,sftp')
@@ -427,10 +428,10 @@ let rxSchemes = '\%('.
 call s:default('rxSchemeUrl', rxSchemes.':.*')
 call s:default('rxSchemeUrlMatchScheme', '\zs'.rxSchemes.'\ze:.*')
 call s:default('rxSchemeUrlMatchUrl', rxSchemes.':\zs.*\ze')
-" scheme regexes }}}
-"}}}
+" scheme regexes 
 
-" AUTOCOMMANDS for all known wiki extensions {{{
+
+" AUTOCOMMANDS for all known wiki extensions 
 let extensions = vimwiki#base#get_known_extensions()
 
 augroup filetypedetect
@@ -454,9 +455,9 @@ augroup vimwiki
     endif
   endfor
 augroup END
-"}}}
 
-" COMMANDS {{{
+
+" COMMANDS 
 command! VimwikiUISelect call vimwiki#base#ui_select()
 " XXX: why not using <count> instead of v:count1?
 " See Issue 324.
@@ -474,9 +475,9 @@ command! -count=1 VimwikiTabMakeDiaryNote
 
 command! VimwikiDiaryGenerateLinks
       \ call vimwiki#diary#generate_diary_section()
-"}}}
 
-" MAPPINGS {{{
+
+" MAPPINGS 
 if !hasmapto('<Plug>VimwikiIndex')
   nmap <silent><unique> <Leader>ww <Plug>VimwikiIndex
 endif
@@ -513,9 +514,9 @@ endif
 nnoremap <unique><script> <Plug>VimwikiTabMakeDiaryNote
       \ :VimwikiTabMakeDiaryNote<CR>
 
-"}}}
 
-" MENU {{{
+
+" MENU 
 function! s:build_menu(topmenu)
   let idx = 0
   while idx < len(g:vimwiki_list)
@@ -543,14 +544,14 @@ if !empty(g:vimwiki_menu)
   call s:build_menu(g:vimwiki_menu)
   call s:build_table_menu(g:vimwiki_menu)
 endif
-" }}}
+" 
 
-" CALENDAR Hook "{{{
+" CALENDAR Hook 
 if g:vimwiki_use_calendar
   let g:calendar_action = 'vimwiki#diary#calendar_action'
   let g:calendar_sign = 'vimwiki#diary#calendar_sign'
 endif
-"}}}
+
 
 
 let &cpo = s:old_cpo

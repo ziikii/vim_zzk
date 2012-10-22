@@ -8,16 +8,16 @@ if exists("b:did_ftplugin")
 endif
 let b:did_ftplugin = 1  " Don't load another plugin for this buffer
 
-" UNDO list {{{
+" UNDO list 
 " Reset the following options to undo this plugin.
 let b:undo_ftplugin = "setlocal ".
       \ "suffixesadd< isfname< comments< ".
       \ "autowriteall< ".
       \ "formatoptions< foldtext< ".
       \ "foldmethod< foldexpr< commentstring< "
-" UNDO }}}
+" UNDO 
 
-" MISC STUFF {{{
+" MISC STUFF 
 
 setlocal autowriteall
 setlocal commentstring=%%%s
@@ -26,14 +26,14 @@ if g:vimwiki_conceallevel && exists("+conceallevel")
   let &conceallevel = g:vimwiki_conceallevel
 endif
 
-" MISC }}}
+" MISC 
 
-" GOTO FILE: gf {{{
+" GOTO FILE: gf 
 execute 'setlocal suffixesadd='.VimwikiGet('ext')
 setlocal isfname-=[,]
-" gf}}}
+" gf
 
-" Autocreate list items {{{
+" Autocreate list items 
 " for list items, and list items with checkboxes
 setlocal formatoptions+=tnro
 setlocal formatoptions-=cq
@@ -60,10 +60,10 @@ if !empty(&langmap)
   endif
 endif
 
-" COMMENTS }}}
+" COMMENTS 
 
-" FOLDING for headers and list items using expr fold method. {{{
-function! VimwikiFoldLevel(lnum) "{{{
+" FOLDING for headers and list items using expr fold method. 
+function! VimwikiFoldLevel(lnum) 
   let line = getline(a:lnum)
 
   " Header folding...
@@ -112,9 +112,9 @@ function! VimwikiFoldLevel(lnum) "{{{
   endif
 
   return base_level
-endfunction "}}}
+endfunction 
 
-function! s:get_base_level(lnum) "{{{
+function! s:get_base_level(lnum) 
   let lnum = a:lnum - 1
   while lnum > 0
     if getline(lnum) =~ g:vimwiki_rxHeader
@@ -123,9 +123,9 @@ function! s:get_base_level(lnum) "{{{
     let lnum -= 1
   endwhile
   return 0
-endfunction "}}}
+endfunction 
 
-function! s:find_forward(rx_item, lnum) "{{{
+function! s:find_forward(rx_item, lnum) 
   let lnum = a:lnum + 1
 
   while lnum <= line('$')
@@ -139,9 +139,9 @@ function! s:find_forward(rx_item, lnum) "{{{
   endwhile
 
   return [lnum, getline(lnum)]
-endfunction "}}}
+endfunction 
 
-function! s:find_backward(rx_item, lnum) "{{{
+function! s:find_backward(rx_item, lnum) 
   let lnum = a:lnum - 1
 
   while lnum > 1
@@ -154,18 +154,18 @@ function! s:find_backward(rx_item, lnum) "{{{
   endwhile
 
   return [lnum, getline(lnum)]
-endfunction "}}}
+endfunction 
 
-function! s:get_li_level(lnum) "{{{
+function! s:get_li_level(lnum) 
   if VimwikiGet('syntax') == 'media'
     let level = vimwiki#u#count_first_sym(getline(a:lnum))
   else
     let level = (indent(a:lnum) / &sw)
   endif
   return level
-endfunction "}}}
+endfunction 
 
-function! s:get_start_list(rx_item, lnum) "{{{
+function! s:get_start_list(rx_item, lnum) 
   let lnum = a:lnum
   while lnum >= 1
     let line = getline(lnum)
@@ -175,17 +175,17 @@ function! s:get_start_list(rx_item, lnum) "{{{
     let lnum -= 1
   endwhile
   return 0
-endfunction "}}}
+endfunction 
 
-function! VimwikiFoldText() "{{{
+function! VimwikiFoldText() 
   let line = substitute(getline(v:foldstart), '\t',
         \ repeat(' ', &tabstop), 'g')
   return line.' ['.(v:foldend - v:foldstart).']'
-endfunction "}}}
+endfunction 
 
-" FOLDING }}}
+" FOLDING 
 
-" COMMANDS {{{
+" COMMANDS 
 command! -buffer Vimwiki2HTML
       \ silent w <bar>
       \ let res = vimwiki#html#Wiki2HTML(expand(VimwikiGet('path_html')),
@@ -243,9 +243,9 @@ command! -buffer VimwikiTableMoveColumnRight call vimwiki#tbl#move_column_right(
 command! -buffer VimwikiDiaryNextDay call vimwiki#diary#goto_next_day()
 command! -buffer VimwikiDiaryPrevDay call vimwiki#diary#goto_prev_day()
 
-" COMMANDS }}}
+" COMMANDS 
 
-" KEYBINDINGS {{{
+" KEYBINDINGS 
 if g:vimwiki_use_mouse
   nmap <buffer> <S-LeftMouse> <NOP>
   nmap <buffer> <C-LeftMouse> <NOP>
@@ -363,13 +363,13 @@ endif
 nnoremap <silent><script><buffer>
       \ <Plug>VimwikiDiaryPrevDay :VimwikiDiaryPrevDay<CR>
 
-function! s:CR() "{{{
+function! s:CR() 
   let res = vimwiki#lst#kbd_cr()
   if res == "\<CR>" && g:vimwiki_table_mappings
     let res = vimwiki#tbl#kbd_cr()
   endif
   return res
-endfunction "}}}
+endfunction 
 
 " List and Table <CR> mapping
 inoremap <buffer> <expr> <CR> <SID>CR()
@@ -396,7 +396,7 @@ endif
 
 " Table mappings
 if g:vimwiki_table_mappings
-  inoremap <expr> <buffer> <Tab> vimwiki#tbl#kbd_tab()
+  inoremap <expr> <buffer> <C-Tab> vimwiki#tbl#kbd_tab()
   inoremap <expr> <buffer> <S-Tab> vimwiki#tbl#kbd_shift_tab()
 endif
 
@@ -415,7 +415,7 @@ nnoremap <silent><script><buffer>
 
 
 
-" Text objects {{{
+" Text objects 
 onoremap <silent><buffer> ah :<C-U>call vimwiki#base#TO_header(0, 0)<CR>
 vnoremap <silent><buffer> ah :<C-U>call vimwiki#base#TO_header(0, 1)<CR>
 
@@ -447,11 +447,11 @@ nnoremap <silent><buffer> <Plug>VimwikiRemoveHeaderLevel :
       \<C-U>call vimwiki#base#RemoveHeaderLevel()<CR>
 
 
-" }}}
+" 
 
-" KEYBINDINGS }}}
+" KEYBINDINGS 
 
-" AUTOCOMMANDS {{{
+" AUTOCOMMANDS 
 if VimwikiGet('auto_export')
   " Automatically generate HTML on page write.
   augroup vimwiki
@@ -461,15 +461,15 @@ if VimwikiGet('auto_export')
   augroup END
 endif
 
-" AUTOCOMMANDS }}}
+" AUTOCOMMANDS 
 
-" PASTE, CAT URL {{{
+" PASTE, CAT URL 
 " html commands
 command! -buffer VimwikiPasteUrl call vimwiki#html#PasteUrl(expand('%:p'))
 command! -buffer VimwikiCatUrl call vimwiki#html#CatUrl(expand('%:p'))
-" }}}
+" 
 
-" DEBUGGING {{{
+" DEBUGGING 
 command! VimwikiPrintWikiState call vimwiki#base#print_wiki_state()
 command! VimwikiReadLocalOptions call vimwiki#base#read_wiki_options(1)
-" }}}
+" 

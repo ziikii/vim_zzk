@@ -128,8 +128,16 @@ snippet style
 	</style>${3}
 snippet base
 	<base href="${1}" target="${2}"`Close()`>
-snippet r
-	<br`Close()[1:]`>
+snippet br
+	<br />
+snippet a
+	<a href="${1}" >${2}</a>${3}
+snippet p
+	<p>${1}</p>${2}
+snippet ul
+	<ul>${1}</ul>${2}
+snippet li
+	<li>${1}</li>${2}
 snippet div
 	<div id="${1:name}">
 		${2}
@@ -194,3 +202,66 @@ snippet <!start
 	<!--// ${1:name} Start-->${2}
 snippet <!end
 	<!--// ${1:name} End-->${2}
+
+
+# codeigniter 
+# Site URL
+snippet surl
+	<?php echo site_url("${1:segments}"); ?>${2}
+# Base URL
+snippet burl
+	<?php echo base_url(); ?>${1}
+##### Form Helper #####
+# Validation Errors
+snippet valerr
+	<?php echo validation_errors(); ?>${1}
+# Form Open
+snippet formo
+	<?php echo form_open('${1:form controller}'); ?>${2}
+# Form Close
+snippet formc
+	<?php echo form_close(); ?>${1}
+## Form Fields ##
+# Hidden
+snippet fhidden
+	<?php echo form_hidden('${1:name}', ${2:array}); ?>${3}
+# Input
+snippet finput
+	<?php echo form_input('${1:array}', set_value('${2:name}')); ?>${3}
+# Password
+snippet fpass
+	<?php echo form_password('${1:array}', set_value('${2:name}')); ?>${3}
+# Upload
+snippet fupload
+	<?php echo form_upload('${1:array}', set_value('${2:name}')); ?>${3}
+# Text area
+snippet ftext
+	<?php echo form_textarea('${1:array}', set_value('${2:name}')); ?>${3}
+# Drop-down
+snippet fdrop
+	<?php echo form_dropdown('${1:name}',${2:array}, $this->input->post('${1}')); ?>${3}
+# Checkbox
+snippet fcheck
+	<?php echo form_checkbox($${1:array}['${2:key}'], '', set_checkbox('${1}[]', '${2}')); ?>${3}
+# Radio button
+snippet fradio
+	<?php echo form_radio($${1:array}['${2:key}'], '', set_radio('${1}[]', '${2}')); ?>${3}
+# Form submit
+snippet fsubmit
+	<?php echo form_submit('${1:name}', '${2:value}'); ?>${3}
+# Form reset
+snippet freset
+	<?php echo form_reset('${1:name}', '${2:value}'); ?>${3}
+# Fieldset open
+snippet fieldo
+	<?php form_fieldset('${1:label}', '${2:array}'); ?>${3}
+# Fieldset close
+snippet fieldc
+	<?php form_fieldset_close(); ?>${1}
+##### HTML Snippets #####
+# PHP Foreach
+snippet sforeach
+	<?php foreach ($${1:array} as $${2:key}) : ?>
+	${3:// code...}
+	<?php endforeach; ?>
+

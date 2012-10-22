@@ -207,6 +207,18 @@ snippet fun
 	{
 		${4:// code...}
 	}
+snippet fun_pu
+	${1:public }function ${2:FunctionName}(${3})
+	{
+		${4:// code...}
+	}
+snippet fun_pr
+	${1:private }function ${2:FunctionName}(${3})
+	{
+		${4:// code...}
+	}
+
+
 # $... = array (...)
 snippet array
 	$${1:arrayName} = array('${2}' => ${3});${4}
@@ -419,7 +431,7 @@ snippet textarea
 	<textarea name="${1:Name}" rows="${2:8}" cols="${3:40}">${4}</textarea>${5}
 #Codeigniter snippets
 #CI_class_c
-snippet CI_class_c
+snippet ci_class_c
 	<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	class ${1:Welcome} extends CI_Controller {
@@ -435,7 +447,7 @@ snippet CI_class_c
 		}
 	}
 #CI_class_m
-snippet CI_class_m
+snippet ci_class_m
 	<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 	class ${1:Welcome} extends CI_Model
@@ -452,15 +464,62 @@ snippet CI_class_m
 		}
 	}	
 snippet this
-	$this->${1:model/controller}->${2:method}(${3:array});${4}
+	$this->${1:model}->${2:method}(${3:array});${4}
+snippet this_lm
+	$this->load->model('${1}');${2}
+snippet this_lv
+	$this->load->view('${1}',$data,true);${2}
+snippet this_lh
+	$this->load->helper('${1}');${2}
+snippet this_ll
+	$this->load->library('${1}');${2}
+snippet this_cl
+	$this->config->load('${1}',true);${2}
+snippet this_ci
+	$this->config->item('${1}');${2}
+snippet this_ip
+	$this->input->post('${1}',true);${2}
+snippet this_o
+	$this->output('${1}',array('${2}'=>'${3}'),$${4});${5}
+snippet this_us
+	intval($this->uri->segment(${1:3}));${2}
+snippet this_data
+	$this->data['${1}'];${2}
+
+snippet data[
+	$data['${1}'] = '${2}';${3}
+snippet name[
+	$${1}['${2}'] = ${3};
+snippet return_arr
+	return array('${1}'=>'${2}','${3}'=>'${4}');${5}
+snippet header(loc
+	header('location:'.site_url('${1}'));${2}
+snippet header(
+	header("Content-Type:text/html;charset=utf-8");
+snippet redirect
+	redirect('${1}');${2}
+snippet show_error
+	show_error('${1}');${2}
 # Form Validation Rules
-snippet formrule
+snippet form_rule
 	$this->form_validation->set_rules('${1:field name}','${2:human name}', '${3:rules}');${4}
+snippet form_mess
+	$this->form_validation->set_message('${1:field name}','${2:human name}');${3}
 # Data array - $data['key']
 snippet darr
 	$data['${1:arrayName}'] = array(
 	'${2}' => ${3},${4}
 	);
+
+# ! 
+snippet is_login
+	!$this->is_login();${1}
+
+#return 
+snippet ret0
+	return TRUE;
+snippet ret1
+	return FALSE;
 # Additional array data
 snippet arrv
 	'${1}' => ${2},${3}
@@ -495,66 +554,20 @@ snippet returnif
 	{
 	return FALSE;
 	}
-##### Form Helper #####
-# Validation Errors
-snippet valerr
-	<?php echo validation_errors(); ?>${1}
-# Form Open
-snippet formo
-	<?php echo form_open('${1:form controller}'); ?>${2}
-# Form Close
-snippet formc
-	<?php echo form_close(); ?>${1}
-## Form Fields ##
-# Hidden
-snippet fhidden
-	<?php echo form_hidden('${1:name}', ${2:array}); ?>${3}
-# Input
-snippet finput
-	<?php echo form_input('${1:array}', set_value('${2:name}')); ?>${3}
-# Password
-snippet fpass
-	<?php echo form_password('${1:array}', set_value('${2:name}')); ?>${3}
-# Upload
-snippet fupload
-	<?php echo form_upload('${1:array}', set_value('${2:name}')); ?>${3}
-# Text area
-snippet ftext
-	<?php echo form_textarea('${1:array}', set_value('${2:name}')); ?>${3}
-# Drop-down
-snippet fdrop
-	<?php echo form_dropdown('${1:name}',${2:array}, $this->input->post('${1}')); ?>${3}
-# Checkbox
-snippet fcheck
-	<?php echo form_checkbox($${1:array}['${2:key}'], '', set_checkbox('${1}[]', '${2}')); ?>${3}
-# Radio button
-snippet fradio
-	<?php echo form_radio($${1:array}['${2:key}'], '', set_radio('${1}[]', '${2}')); ?>${3}
-# Form submit
-snippet fsubmit
-	<?php echo form_submit('${1:name}', '${2:value}'); ?>${3}
-# Form reset
-snippet freset
-	<?php echo form_reset('${1:name}', '${2:value}'); ?>${3}
-# Fieldset open
-snippet fieldo
-	<?php form_fieldset('${1:label}', '${2:array}'); ?>${3}
-# Fieldset close
-snippet fieldc
-	<?php form_fieldset_close(); ?>${1}
-##### HTML Snippets #####
-# <br>
-snippet r
-	<br`Close()[1:]`>
-# PHP Foreach
-snippet sforeach
-	<?php foreach ($${1:array} as $${2:key}) : ?>
-	${3:// code...}
-	<?php endforeach; ?>
 ##### Database Class/Active Record #####
 # Get query
 snippet dbget
-	$q = $this->db->get('${1:table}');${2}
+	$this->db->get('${1:table}');${2}
+snippet dbget_row
+	$this->db->get('${1:table}')->row();${2}
+snippet dbget_result
+	$this->db->get('${1:table}')->result();${2}
+
+snippet dborder_by
+	$this->db->order_by('${1:table}','asc');${2}
+snippet db_count
+	$this->db->count_all_results('${1:table}');${2}
+
 # Get_where query
 snippet dbgetwhere
 	$q = $this->db->get_where('${1:table}', array('${2:field}' => $${3:input}));${4}
@@ -573,10 +586,4 @@ snippet dbupdate
 # Delete
 snippet dbdelete
 	$this->db->delete('${1:table}', $${2:array});${3}
-##### URL Helper #####
-# Site URL
-snippet surl
-	<?php echo site_url("${1:segments}"); ?>${2}
-# Base URL
-snippet burl
-	<?php echo base_url(); ?>${1}
+
