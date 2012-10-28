@@ -406,7 +406,7 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 map <C-g> :Grep  <C-R>=expand("<cword>")<CR> **/*.php
 
 "vimgrep 
-map <C-g> :vimgrep  <C-R>=expand("<cword>")<CR> **/*.php
+" map <C-g> :vimgrep  <C-R>=expand("<cword>")<CR> **/*.php
 
 
 
@@ -462,13 +462,6 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 "autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
 
 
-
-" -----------------------------------------------------------------
-"  设置字典 ~/.vim/dict/文件的路径
-" -----------------------------------------------------------------
-autocmd filetype javascript set dictionary=$VIMFILES/dict/javascript.dict
-autocmd filetype css set dictionary=$VIMFILES/dict/css.dict
-autocmd filetype php set dictionary=$VIMFILES/dict/php.dict
 
 "打开javascript折叠
 let b:javascript_fold=1
@@ -630,7 +623,6 @@ imap <C-a> <esc>a
 "snipMate settings
 "-----------------------------------------------------------------
 let g:snips_author = 'jack chim <ziikii1@qq.com>'
-"set ft=html.eruby
 "autocmd FileType python set ft=python.django
 "autocmd FileType html set ft=htmldjango.html
 
@@ -692,8 +684,8 @@ nmap <silent> <leader>wm :WMToggle<cr>
 "Grep settings 	
 "-----------------------------------------------------------------
 "grep settings
-"nnoremap <silent> <F3> :Grep<CR>
-"let Grep_Cygwin_Find = 1
+nnoremap <silent> <F3> :Grep<CR>
+let Grep_Cygwin_Find = 1
 
 
 
@@ -791,7 +783,7 @@ nmap ,gitssh :! ssh -T git@github.com
 " AutoCloseTag	
 "Make it so AutoCloseTag works for xml and xhtml files as well
 " -----------------------------------------------------------------
-"au FileType xhtml,xml,html so ~/.vim/ftplugin/html_autoclosetag.vim
+au FileType html so ~/.vim/ftplugin/html_autoclosetag.vim
 
 
 " -----------------------------------------------------------------
@@ -1110,10 +1102,14 @@ autocmd BufReadPost *
             \   exe "normal g'\"" |
             \ endif
 
-"-----------------------------------------------------------------    
-"PHP 字典 
-"-----------------------------------------------------------------
-"au FileType php setlocal dict+=~/.vim/dict/php_funclist.txt
+" -----------------------------------------------------------------
+"  设置字典 ~/.vim/dict/文件的路径
+" -----------------------------------------------------------------
+autocmd filetype javascript set dictionary=$VIMFILES/dict/javascript.dict
+autocmd filetype css set dictionary=$VIMFILES/dict/css.dict
+autocmd filetype php set dictionary=$VIMFILES/dict/php.dict
+au FileType php setlocal dict+=~/.vim/dict/php_funclist.txt
+
 
 
 "-----------------------------------------------------------------    
