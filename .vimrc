@@ -176,7 +176,7 @@ set noswapfile
 "set swapfile
 
 "当前 buffer 可放在 bg 而不用写入磁盘
-set hidden
+"set hidden
 
 " backups
 "set backupdir=~/vim_backup_data/backup/
@@ -197,13 +197,13 @@ set hidden
 "折叠代码方式
 "-----------------------------------------------------------------
 " 标签折叠
-set foldmethod=marker
+"set foldmethod=marker
 
 "手动设置折叠
-set foldmethod=manual 
+"set foldmethod=manual 
 
 "设置语法折叠
-"set foldmethod=syntax
+set foldmethod=syntax
 
 "缩进折叠
 "set foldmethod=indent
@@ -215,7 +215,7 @@ set foldmethod=manual
 "set foldclose=all
 
 "窗口左边显示一小栏来标识各个折叠 多少列
-set foldcolumn=1
+"set foldcolumn=1
 
 " Code folding options
 nmap <leader>f0 :set foldlevel=0<CR>
@@ -326,10 +326,10 @@ let NERDTreeShowLineNumbers=1
 let NERDTreeQuitOnOpen = 0
 
 "让Tree把自己给装饰得多姿多彩漂亮点
-" let NERDChristmasTree=1
+let NERDChristmasTree=1
 
 "让注释符与语句之间留一个空格
-" let NERDSpaceDelims=1 
+let NERDSpaceDelims=1 
 
 "多行注释时样子更好看
 let NERDCompactSexyComs=1  
@@ -385,7 +385,7 @@ set ff=unix
 let loaded_matchit = 1
 
 "匹配括号的规则，增加针对html的<>
-set matchpairs=(:),{:},[:],<:>
+" set matchpairs=(:),{:},[:],<:>
 
 
 " -----------------------------------------------------------------        
@@ -461,13 +461,17 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 "au BufNewFile,Bufread,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
 "autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
 
-" 设置字典 ~/.vim/dict/文件的路径
-"autocmd filetype javascipt set dictionay=$VIMFILES/dict/javascipt.dict
-"autocmd filetype css set dictionay=$VIMFILES/dict/css.dict
-"autocmd filetype php set dictionay=$VIMFILES/dict/php.dict
+
+
+" -----------------------------------------------------------------
+"  设置字典 ~/.vim/dict/文件的路径
+" -----------------------------------------------------------------
+autocmd filetype javascript set dictionary=$VIMFILES/dict/javascript.dict
+autocmd filetype css set dictionary=$VIMFILES/dict/css.dict
+autocmd filetype php set dictionary=$VIMFILES/dict/php.dict
 
 "打开javascript折叠
-"let b:javascript_fold=1
+let b:javascript_fold=1
 
 
 
@@ -478,7 +482,7 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 ":set ft=nginx
 nmap <leader>seth :set filetype=html<Cr>
 nmap <leader>setc :set filetype=css<Cr>
-nmap <leader>setj :set filetype=javascipt<Cr>
+nmap <leader>setj :set filetype=javascript<Cr>
 nmap <leader>setp :set filetype=php<Cr>
 nmap <leader>setd :set filetype=default<Cr>
 nmap <leader>setx :set filetype=xml<Cr>
