@@ -12,7 +12,7 @@
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
-    finish
+		finish
 endif
 
 " Use Vim settings, rather than Vi settings (much better!).
@@ -23,9 +23,9 @@ endif
 set backspace=indent,eol,start
 
 if has("vms")
-    set nobackup		" do not keep a backup file, use versions instead
+		set nobackup		" do not keep a backup file, use versions instead
 else
-    set backup		" keep a backup file
+		set backup		" keep a backup file
 endif
 " keep 50 lines of command line history
 set ruler		" show the cursor position all the time
@@ -44,47 +44,47 @@ inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-    set mouse=a
+		set mouse=a
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
-    syntax on
-    set hlsearch
+		syntax on
+		set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
-    " Enable file type detection.
-    " Use the default filetype settings, so that mail gets 'tw' set to 72,
-    " 'cindent' is on in C files, etc.
-    " Also load indent files, to automatically do language-dependent indenting.
-    filetype plugin indent on
+		" Enable file type detection.
+		" Use the default filetype settings, so that mail gets 'tw' set to 72,
+		" 'cindent' is on in C files, etc.
+		" Also load indent files, to automatically do language-dependent indenting.
+		filetype plugin indent on
 
-    " Put these in an autocmd group, so that we can delete them easily.
-    augroup vimrcEx
-        au!
+		" Put these in an autocmd group, so that we can delete them easily.
+		augroup vimrcEx
+				au!
 
-        " For all text files set 'textwidth' to 78 characters.
-        autocmd FileType text setlocal textwidth=78
+				" For all text files set 'textwidth' to 78 characters.
+				autocmd FileType text setlocal textwidth=78
 
-        " When editing a file, always jump to the last known cursor position.
-        " Don't do it when the position is invalid or when inside an event handler
-        " (happens when dropping a file on gvim).
-        " Also don't do it when the mark is in the first line, that is the default
-        " position when opening a file.
-        autocmd BufReadPost *
-                    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-                    \   exe "normal! g`\"" |
-                    \ endif
+				" When editing a file, always jump to the last known cursor position.
+				" Don't do it when the position is invalid or when inside an event handler
+				" (happens when dropping a file on gvim).
+				" Also don't do it when the mark is in the first line, that is the default
+				" position when opening a file.
+				autocmd BufReadPost *
+										\ if line("'\"") > 1 && line("'\"") <= line("$") |
+										\   exe "normal! g`\"" |
+										\ endif
 
-    augroup END
+		augroup END
 
 else
 
-    set autoindent		" always set autoindenting on
+		set autoindent		" always set autoindenting on
 
 endif " has("autocmd")
 
@@ -92,8 +92,8 @@ endif " has("autocmd")
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
 if !exists(":DiffOrig")
-    command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-                \ | wincmd p | diffthis
+		command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+								\ | wincmd p | diffthis
 endif
 
 
@@ -154,8 +154,8 @@ map <leader>cd :cd %:p:h<cr>
 
 " tab键默认4空格
 set tabstop=4
-set shiftwidth=4
-set expandtab
+" set shiftwidth=4
+" set expandtab
 
 " compatible is not set
 set nocompatible
@@ -501,8 +501,8 @@ set smartindent
 " -----------------------------------------------------------------
 "zencoding settings
 " -----------------------------------------------------------------
-"let g:user_zen_expandabbr_key = '<c-y>'
-"let g:use_zen_complete_tag = 1
+" let g:user_zen_expandabbr_key = '<c-y>'
+" let g:use_zen_complete_tag = 1
 
 
 
@@ -510,12 +510,12 @@ set smartindent
 "编辑按键映射	
 "-----------------------------------------------------------------
 ":tabclose		Close the current tab page.
-":tabdo		Perform a command in every tab page.
+":tabdo	    	Perform a command in every tab page.
 ":tabedit		Edit a file in a new tab page.
 ":tabnew		Open a new tab page.
 ":tabfind		Search for a file and open it in a new tab page.
 ":tabnext		Go to the next tab page.
-":tabprevious		Go to the previous tab page.
+":tabprevious	Go to the previous tab page.
 ":tabNext		Go to the previous tab page.
 ":tabfirst		Go to the first tab page.
 ":tabrewind		Go to the first tab page.
@@ -837,15 +837,15 @@ nnoremap <C-q> :call <SID>QuickfixToggle()<cr>
 let g:quickfix_is_open = 0
 
 function! s:QuickfixToggle()
-    if g:quickfix_is_open
-        cclose
-        let g:quickfix_is_open = 0
-        execute g:quickfix_return_to_window . "wincmd w"
-    else
-        let g:quickfix_return_to_window = winnr()
-        copen
-        let g:quickfix_is_open = 1
-    endif
+		if g:quickfix_is_open
+				cclose
+				let g:quickfix_is_open = 0
+				execute g:quickfix_return_to_window . "wincmd w"
+		else
+				let g:quickfix_return_to_window = winnr()
+				copen
+				let g:quickfix_is_open = 1
+		endif
 endfunction
 
 
@@ -913,13 +913,13 @@ let g:vimwiki_use_mouse = 1
 let g:vimwiki_camel_case = 0
 
 let g:vimwiki_list = [{
-            \ 'path': '~/vimwiki/',
-            \ 'path_html': '~/vimwiki/html/',
-            \ 'template_path': '~/vimwiki/template/',
-            \ 'template_default': 'def_template_blog',
-            \ 'template_ext': '.html',
-            \ 'auto_export': 1,
-            \ 'nested_syntaxes': {'Clang': 'c', 'Go': 'go', 'Lisp': 'lisp', 'PHP': 'php', 'JS': 'javascript', 'CSS': 'css', 'HTML': 'html', 'XML': 'xml', 'SQL': 'sql', 'Bash': 'sh', 'Vim': 'vim', 'Make': 'make', 'CMake': 'cmake'}}]
+						\ 'path': '~/vimwiki/',
+						\ 'path_html': '~/vimwiki/html/',
+						\ 'template_path': '~/vimwiki/template/',
+						\ 'template_default': 'def_template_blog',
+						\ 'template_ext': '.html',
+						\ 'auto_export': 1,
+						\ 'nested_syntaxes': {'Clang': 'c', 'Go': 'go', 'Lisp': 'lisp', 'PHP': 'php', 'JS': 'javascript', 'CSS': 'css', 'HTML': 'html', 'XML': 'xml', 'SQL': 'sql', 'Bash': 'sh', 'Vim': 'vim', 'Make': 'make', 'CMake': 'cmake'}}]
 " \ 'syntax': 'markdown',
 " \ 'ext': '.wiki',
 
@@ -1021,32 +1021,32 @@ nmap -- <Plug>VimwikiRemoveHeaderLevel
 " -----------------------------------------------------------------
 " 编译源文件
 func! CompileCode()
-    exec "w"
-    if &filetype == "c"
-        exec "!colorgcc -Wall -std=c99 %<.c -o %<"
-    elseif &filetype == "go"
-        exec "!gccgo -Wall %<.go -o %<"
-    elseif &filetype == "sh"
-        exec "!bash %<.sh"
-    elseif &filetype == "php"
-        exec "!php %<.php"
-    elseif &filetype == "make"
-        exec "!colormake"
-    endif
+		exec "w"
+		if &filetype == "c"
+				exec "!colorgcc -Wall -std=c99 %<.c -o %<"
+		elseif &filetype == "go"
+				exec "!gccgo -Wall %<.go -o %<"
+		elseif &filetype == "sh"
+				exec "!bash %<.sh"
+		elseif &filetype == "php"
+				exec "!php %<.php"
+		elseif &filetype == "make"
+				exec "!colormake"
+		endif
 endfunc
 
 " 运行可执行文件
 func! RunCode()
-    exec "w"
-    if &filetype == "c" || &filetype == "go"
-        exec "! ./%<"
-    elseif &filetype == "sh"
-        exec "!bash %<.sh"
-    elseif &filetype == "php"
-        exec "!php %<.php"
-    elseif &filetype == "make"
-        exec "! ./app"
-    endif
+		exec "w"
+		if &filetype == "c" || &filetype == "go"
+				exec "! ./%<"
+		elseif &filetype == "sh"
+				exec "!bash %<.sh"
+		elseif &filetype == "php"
+				exec "!php %<.php"
+		elseif &filetype == "make"
+				exec "! ./app"
+		endif
 endfunc
 
 
@@ -1098,9 +1098,9 @@ nmap <F2> :ConqueTermSplit bash<CR>
 "-----------------------------------------------------------------
 
 autocmd BufReadPost *
-            \ if line("'\"")>0&&line("'\"")<=line("$") |
-            \   exe "normal g'\"" |
-            \ endif
+						\ if line("'\"")>0&&line("'\"")<=line("$") |
+						\   exe "normal g'\"" |
+						\ endif
 
 " -----------------------------------------------------------------
 "  设置字典 ~/.vim/dict/文件的路径
@@ -1140,18 +1140,18 @@ let g:netrw_sort_by = "name"
 "cscope 
 "-----------------------------------------------------------------
 "if has("cscope")
-    "set csprg=/usr/local/bin/cscope
-    "set csto=0
-    "set cst
-    "set nocsverb
-    "" add any database in current directory
-    "if filereadable("cscope.out")
-        "cs add cscope.out
-    "" else add database pointed to by environment
-    "elseif $CSCOPE_DB != ""
-        "cs add $CSCOPE_DB
-    "endif
-    "set csverb
+"set csprg=/usr/local/bin/cscope
+"set csto=0
+"set cst
+"set nocsverb
+"" add any database in current directory
+"if filereadable("cscope.out")
+"cs add cscope.out
+"" else add database pointed to by environment
+"elseif $CSCOPE_DB != ""
+"cs add $CSCOPE_DB
+"endif
+"set csverb
 "endif
 
 map <C-_> :cstag <C-R>=expand("<cword>")<CR><CR>
