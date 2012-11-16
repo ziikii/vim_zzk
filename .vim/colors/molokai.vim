@@ -166,7 +166,9 @@ if &t_Co > 255
 
    " complete menu
    hi Pmenu           ctermfg=81  ctermbg=16
-   hi PmenuSel                    ctermbg=244
+   " hi PmenuSel                    ctermbg=244
+   " 设置当前补全的前景色为白色
+   hi PmenuSel        ctermfg=White            ctermbg=244
    hi PmenuSbar                   ctermbg=232
    hi PmenuThumb      ctermfg=81
 
