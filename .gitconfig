@@ -1,0 +1,88 @@
+[user]
+	name = Jack.Chim
+	email = ziikii1@qq.com
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[color]  
+    status = auto  
+    branch = auto  
+    diff = auto  
+    ui = true  
+    pager = true  
+[color "branch"]  
+    current = yellow reverse  
+    local = yellow  
+    remote = green  
+[color "diff"]  
+    meta = yellow bold  
+    frag = magenta bold  
+    old = red bold  
+    new = green bold  
+[color "status"]  
+    added = yellow  
+    changed = green  
+    untracked = cyan
+[alias]
+    amend = !git fix
+    b = branch
+    ba = branch -a
+    br = branch -r
+    cb = checkout -b
+    ci = commit
+    co = checkout
+    cob = checkout -b
+    cp = cherry-pick
+    d = diff HEAD
+    dl = diff HEAD^
+    ds = diff --cached
+    du = diff
+    edit-conflicted-files = !$EDITOR $(git ls-conflicted-files)
+    f = fetch
+    fix = commit --amend
+    l = log
+    l1 = log --pretty=oneline --abbrev-commit
+    l1f = log --pretty=oneline
+    lg = log --graph --pretty=oneline --abbrev-commit
+    lga = log --graph --pretty=oneline --abbrev-commit --all
+    lgd = !git lg --decorate
+    lgf = log --graph --pretty=oneline
+    lgs = !git lg --source
+    lgss = !git lgs --branches --tags
+    ls = ls-files
+    ls-conflicted-files = ls-files --unmerged
+    m = merge --log
+    m1 = merge --log HEAD@{1}
+    m2 = merge --log HEAD@{2}
+    m3 = merge --log HEAD@{3}
+    mb = merge-base
+    pa = !git pushall
+    r1 = rebase HEAD@{1}
+    r2 = rebase HEAD@{2}
+    r3 = rebase HEAD@{3}
+    ra = rebase --abort
+    rc = rebase --continue
+    rh = reset --hard
+    rs = reset --soft
+    rw = reset --hard ORIG_HEAD
+    s = show
+    s1 = show HEAD@{1}
+    s2 = show HEAD@{2}
+    s3 = show HEAD@{3}
+    sa = stash apply
+    sd = stash drop
+    sl = stash list
+    sm = submodule
+    sma = submodule add
+    smi = submodule init
+    sms = submodule status
+    smu = submodule update
+    sp = stash pop
+    ss = stash save
+    st = status
+    staged = diff --cached
+    sv = stash save
+    t = tag
+    td = tag -d
+    unstaged = diff
