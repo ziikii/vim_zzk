@@ -498,7 +498,7 @@ nmap <leader>setx :set filetype=xml<Cr>
 
 
 "-----------------------------------------------------------------    
-"Indent
+"Indent 对齐
 "-----------------------------------------------------------------
 "set g:js_indent = /location/to/javascript.vim
 
@@ -637,7 +637,7 @@ imap <C-a> <esc>a
 "-----------------------------------------------------------------
 "snipMate settings
 "-----------------------------------------------------------------
-let g:snips_author = 'jack chim <ziikii1@qq.com>'
+let g:snips_author = 'Jack.Chim 詹植柯 <ziikii1@qq.com>'
 "autocmd FileType python set ft=python.django
 "autocmd FileType html set ft=htmldjango.html
 
@@ -1120,12 +1120,19 @@ autocmd BufReadPost *
 " -----------------------------------------------------------------
 "  设置字典 ~/.vim/dict/文件的路径
 " -----------------------------------------------------------------
-autocmd filetype javascript set dictionary=$VIMFILES/dict/javascript.dict
-autocmd filetype css set dictionary=$VIMFILES/dict/css.dict
-autocmd filetype php set dictionary=$VIMFILES/dict/php.dict
+autocmd filetype javascript set dictionary=$HOME/dict/javascript.dict
+autocmd filetype css set dictionary=$HOME/dict/css.dict
+autocmd filetype html set dictionary=$HOME/.vim/dict/html.dict
+
+autocmd filetype php set dictionary=$HOME/.vim/dict/php.dict
 autocmd FileType php setlocal dict+=~/.vim/dict/php_funclist.txt
+autocmd filetype python set dictionary=$HOME/.vim/dict/python.dict
+autocmd filetype ruby set dictionary=$HOME/.vim/dict/ruby.dict
+autocmd filetype java set dictionary=$HOME/.vim/dict/java.dict
+autocmd filetype objc set dictionary=$HOME/.vim/dict/objc.dict
 
-
+autocmd filetype c set dictionary=$HOME/.vim/dict/c.dict
+autocmd filetype cpp set dictionary=$HOME/.vim/dict/cpp.dict
 
 "-----------------------------------------------------------------    
 "netrw settings
