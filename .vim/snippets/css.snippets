@@ -1,3 +1,12 @@
+snippet #
+	#${1:name}{
+	   ${2:something}
+	}${3}
+snippet .
+	.${1:name}{
+	   ${2:something}
+	}${3}
+
 # css snippets 
 snippet reset
 	/*reset*/
@@ -341,3 +350,17 @@ snippet color
 	.fuchsia{color:fuchsia!important;}^!
 snippet by
 	/*-- by wondger ${1} --*/${2}
+# CSS3
+snippet -moz-border-radius
+	-moz-border-radius:${1:0} ${2:0} ${3:0} ${4:0};${5}
+snippet border-radius
+	border-radius:${1:0};${2}
+snippet -webkit-box-shadow
+	-webkit-box-shadow:${1:0};
+snippet rgba
+	rgba(${1:0});${2}
+snippet -moz-box-shadow
+	-moz-box-shadow:${1:0};${2}
+snippet box-shadow
+	box-shadow:${1};${2}
+
