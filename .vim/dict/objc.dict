@@ -1,0 +1,34 @@
+/* ----- //Object-C dict ------------------------------------------------- */
+import 
+include 
+define 
+pragma 
+interface 
+end
+implementation 
+synthesize 
+static 
+void
+super 
+self 
+if 
+else 
+endif
+ifdef 
+selector
+return 
+id
+int
+BOOL
+typedef 
+const 
+for
+extern 
+
+
+
+
+/* ----- //license ------------------------------------------------- */
+license_alp2
+
+
