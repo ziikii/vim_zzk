@@ -70,8 +70,9 @@ if has("autocmd")
 				" For all text files set 'textwidth' to 78 characters.
 				autocmd FileType text setlocal textwidth=78
 
-				" When editing a file, always jump to the last known cursor position.
-				" Don't do it when the position is invalid or when inside an event handler
+                " When editing a file, always jump to the last known cursor
+                " position.  Don't do it when the position is invalid or when
+                " inside an event handler
 				" (happens when dropping a file on gvim).
 				" Also don't do it when the mark is in the first line, that is the default
 				" position when opening a file.
@@ -107,10 +108,16 @@ endif
 " -----------------------------------------------------------------        
 " Edit the vimrc file
 " :echo $MYVIMRC
-map <leader>vimrc :source /home/ziikii/.vimrc<cr>
-map <leader>ev :e /home/ziikii/.vimrc<CR>
-map <leader>sv :so /home/ziikii/.vimrc<CR>
+map <leader>vimrc :source ~/.vimrc<cr>
 
+" 编辑vim个人配置文件
+map <leader>ev :e  ~/.vimrc<CR>
+
+" 更新vim配置
+map <leader>sv :so ~/.vimrc<CR>
+
+" 更新新添加的snippets
+map <leader>sn :so ~/.vim/plugin/snipMate.vim<CR>
 
 
 
@@ -128,7 +135,7 @@ set ai!
 set number
 
 "设置鼠标模式
-set mouse=a
+" set mouse=a
 
 "显示模式
 set showmode
@@ -154,14 +161,14 @@ map <leader>cd :cd %:p:h<cr>
 
 " tab键默认4空格
 set tabstop=4
-" set shiftwidth=4
-" set expandtab
+set shiftwidth=4
+set expandtab
 
 " compatible is not set
-set nocompatible
+" set nocompatible
 
 " 保留历史记录
-set history=50
+set history=500
 
 
 " -----------------------------------------------------------------        
@@ -176,7 +183,7 @@ set noswapfile
 "set swapfile
 
 "当前 buffer 可放在 bg 而不用写入磁盘
-"set hidden
+set hidden
 
 " backups
 "set backupdir=~/vim_backup_data/backup/
@@ -299,12 +306,20 @@ set nolist
 " :%s/\n//g	"删除换行符
 " set textwidth	"设置行宽
 " set textwidth	"设置行边距
+
+
+" -----------------------------------------------------------------
+" 删除行末符 ^M    
+" -----------------------------------------------------------------
+" :%s/Ctrl+v Ctrl+m//gc
+
+
+" -----------------------------------------------------------------
+" 合并行    
+" -----------------------------------------------------------------
+" v模式选择
+" J 合并为一行
 " join	"合并多行
-" J	"合并两行
-
-
-
-
 
 
 " -----------------------------------------------------------------        
@@ -382,10 +397,10 @@ set ff=unix
 " plugin - matchit.vim   对%命令进行扩展使得能在嵌套标签和语句之间跳转
 " " % 正向匹配      g% 反向匹配
 " " [% 定位块首     ]% 定位块尾
-let loaded_matchit = 1
+" let loaded_matchit = 1
 
 "匹配括号的规则，增加针对html的<>
-" set matchpairs=(:),{:},[:],<:>
+set matchpairs=(:),{:},[:],<:>
 
 
 " -----------------------------------------------------------------        
@@ -439,7 +454,7 @@ let g:acp_enableAtStatup = 1
 "-----------------------------------------------------------------	
 "OmniCppComplete
 "-----------------------------------------------------------------	
-set nocp
+" set nocp
 let OmniCpp_NamespaceSeach = 1
 let OmniCpp_GlobalScopeSeach = 1
 let OmniCpp_ShowAccess = 1
@@ -488,7 +503,7 @@ nmap <leader>setx :set filetype=xml<Cr>
 "set g:js_indent = /location/to/javascript.vim
 
 "自动对齐
-set autoindent
+" set autoindent
 
 ""智能对齐方式
 set smartindent
@@ -783,7 +798,7 @@ nmap ,gitssh :! ssh -T git@github.com
 " AutoCloseTag	
 "Make it so AutoCloseTag works for xml and xhtml files as well
 " -----------------------------------------------------------------
-au FileType html so ~/.vim/ftplugin/html_autoclosetag.vim
+" au FileType html so ~/.vim/ftplugin/html_autoclosetag.vim
 
 
 " -----------------------------------------------------------------
@@ -923,7 +938,7 @@ let g:vimwiki_list = [{
 " \ 'syntax': 'markdown',
 " \ 'ext': '.wiki',
 
-let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,br,hr,div,del,code' 
+let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,br,hr,div,del' 
 
 map <S-F11> :VimwikiAll2HTML<cr>
 map <M-F12> :!cd /home/ziikii/vimwiki/html/ && bash auto_git_push.sh<cr>
@@ -993,9 +1008,9 @@ nmap <Leader>wmdt <Plug>VimwikiTabMakeDiaryNote
 " Links to directories (ending with a "/") are also supported: >
 " [[/home/somebody/|Home Directory]]
 hi VimwikiHeader1  ctermbg=DarkBlue ctermfg=white
-hi VimwikiHeader2  ctermbg=Red ctermfg=white
-hi VimwikiHeader3  ctermbg=Green ctermfg=white
-hi VimwikiHeader4  ctermbg=DarkCyan ctermfg=white
+hi VimwikiHeader2  ctermbg=161 ctermfg=white
+hi VimwikiHeader3  ctermbg=208 ctermfg=white
+hi VimwikiHeader4  ctermbg=118 ctermfg=white
 hi VimwikiHeader5  ctermbg=DarkMagenta ctermfg=white
 hi VimwikiHeader6  ctermbg=DarkGrey ctermfg=white
 
@@ -1108,7 +1123,7 @@ autocmd BufReadPost *
 autocmd filetype javascript set dictionary=$VIMFILES/dict/javascript.dict
 autocmd filetype css set dictionary=$VIMFILES/dict/css.dict
 autocmd filetype php set dictionary=$VIMFILES/dict/php.dict
-au FileType php setlocal dict+=~/.vim/dict/php_funclist.txt
+autocmd FileType php setlocal dict+=~/.vim/dict/php_funclist.txt
 
 
 
