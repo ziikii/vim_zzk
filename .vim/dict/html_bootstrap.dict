@@ -41,15 +41,9 @@ submit
 text 
 placeholder 
 password 
+
 /* ----- //ALways used Id and Class ------------------------------------------------- */
-GlobalHeader
-GlobalFooter
-header
-footer 
-navigation
-logo
-loginout
-login
+
 /* ----- //Html5 tags ------------------------------------------------- */
 abbr 
 acronym 
@@ -158,6 +152,8 @@ u
 ul 
 var
 video
+
+
 /* ----- //Bootstrap CLass ------------------------------------------------- */
 btn-primary 
 btn-danger 
@@ -165,5 +161,12 @@ btn-warning
 btn-success 
 btn-info 
 btn-inverse
+
+
+
+
 /* ----- //license ------------------------------------------------- */
 license_alp2
+
+
+

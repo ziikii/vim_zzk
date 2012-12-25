@@ -1,0 +1,564 @@
+jQuery
+expr
+context
+html
+ownerDoc
+jQuery
+props
+elements
+callback
+each
+length 
+selector 
+context 
+get
+index
+subject
+data
+name 
+value
+data
+removeData
+name
+el
+key
+val
+queue
+cb
+queue
+clearQueue
+queueName
+fn
+extend
+object
+extend
+object
+noConflict
+ex
+attr
+properties
+key
+value
+attr
+key
+fn
+removeAttr
+addClass
+class 
+removeClass
+toggleClass
+sw
+html
+val 
+text
+arr 
+css
+properties
+name
+value 
+offset
+coordinates
+position
+scrollTop
+scrollLeft
+height
+width
+innerHeight
+innerWidth
+outerHeight
+options
+outerWidth
+id 
+element 
+class 
+selector1
+selector2
+selectorN 
+ancestor 
+descendant 
+parent 
+child 
+prevnext 
+prev 
+siblings 
+first 
+last 
+not 
+even 
+odd 
+eq 
+gt 
+lt 
+header 
+animated 
+empty 
+has 
+parent 
+hidden 
+visible 
+attribute 
+value 
+attrSel1attrSel2attrSelN 
+nth-child 
+first-child 
+last-child 
+only-child 
+input 
+text 
+password 
+radio 
+checkbox 
+submit 
+image 
+reset 
+button 
+file 
+hidden 
+enabled 
+disabled 
+checked 
+selected 
+append
+appendTo
+prepend
+prependTo
+after
+content 
+before
+content 
+insertAfter
+insertBefore
+wrap
+html
+elem
+unwrap
+wrapAll
+wrapAll
+elem
+wrapInner
+elem
+wrapInner
+replaceWith
+content
+replaceAll
+selector
+empty
+remove
+detach
+true
+eq
+index
+first
+last
+hasClass
+class
+filter
+expr 
+fn
+is
+expr
+map
+callback
+has
+not
+expr
+slice
+start
+end
+children
+expr
+closest
+expr
+find
+next
+nextAll
+expr
+ 
+nextUntil
+expr
+ 
+offsetParent
+
+ 
+parent
+expr
+ 
+parents
+expr
+ 
+parentsUntil
+expr
+ 
+prev
+expr
+ 
+prevAll
+expr
+ 
+prevUntil
+expr
+ 
+siblings
+expr
+ 
+串联
+add
+expr
+ context
+ 
+andSelf
+
+ 
+contents
+
+ 
+end
+
+ 页面载入
+ready
+fn
+ 
+事件处理
+bind
+type
+ data
+ fn
+ 
+one
+type
+ data
+ fn
+ 
+trigger
+type
+ data
+ 
+triggerHandler
+type
+ data
+ 
+unbind
+type
+ data
+ 
+事件委派
+live
+type
+ data
+ fn
+ 
+die
+type
+ fn
+ 
+事件切换
+hover
+over
+ out
+ 
+toggle
+fn
+ fn2
+ fn3
+ fn4
+ 
+
+
+
+ 
+事件
+blur
+ fn 
+ 
+change
+ fn 
+ 
+click
+ fn 
+ 
+dblclick
+ fn 
+ 
+error
+ fn 
+ 
+focus
+ fn 
+ 
+focusin
+ fn 
+ 
+focusout
+ fn 
+ 
+keydown
+ fn 
+ 
+keypress
+ fn 
+ 
+keyup
+ fn 
+ 
+mousedown
+fn
+ 
+mousemove
+fn
+ 
+mouseout
+fn
+ 
+mouseover
+fn
+ 
+mouseup
+fn
+ 
+resize
+fn
+ 
+scroll
+fn
+ 
+select
+ fn 
+ 
+submit
+ fn 
+ 
+unload
+fn
+ 
+效果
+基本
+show
+
+ 
+show
+speed
+ callback
+ 
+hide
+
+ 
+hide
+speed
+ callback
+ 
+toggle
+
+ 
+toggle
+switch
+ 
+toggle
+speed
+ callback
+ 
+滑动
+slideDown
+speed
+ callback
+ 
+slideUp
+speed
+ callback
+ 
+slideToggle
+speed
+ callback
+ 
+淡入淡出
+fadeIn
+speed
+ callback
+ 
+fadeOut
+speed
+ callback
+ 
+fadeTo
+speed
+ opacity
+ fn
+ 
+自定义
+animate
+param
+dur
+e
+fn
+ 
+animate
+params
+ options
+ 
+stop
+clearQueue
+ gotoEnd
+ 
+delay
+duration
+ queueName
+ 
+设置
+jQuery
+fx
+off 
+
+
+Ajax 请求
+
+ajax
+options
+ 
+load
+url
+ data
+ callback
+ 
+
+get
+url
+ data
+ fn
+ type
+ 
+
+getJSON
+url
+ data
+ fn
+ 
+
+getScript
+url
+ callback
+ 
+
+post
+url
+ data
+ fn
+ type
+ 
+Ajax 事件
+ajaxComplete
+callback
+ 
+ajaxError
+callback
+ 
+ajaxSend
+callback
+ 
+ajaxStart
+callback
+ 
+ajaxStop
+callback
+ 
+ajaxSuccess
+callback
+ 
+其它
+
+ajaxSetup
+options
+ 
+serialize
+
+ 
+serializeArray
+
+ 
+工具
+浏览器及特性检测
+
+support 
+
+browser 
+
+browser
+version 
+
+boxModel 
+数组和对象操作
+
+each
+object
+ callback
+ 
+
+extend
+d
+tgt
+obj1
+objN
+ 
+
+grep
+fn
+invert
+makeArray
+map
+callback
+inArray
+value
+array
+toArray
+merge
+first
+second
+unique
+array
+parseJSON
+json
+noop 
+proxy
+function
+scope
+contains
+container
+contained
+isArray
+isFunction
+isEmptyObject
+isPlainObject
+trim
+str
+URL
+param
+obj
+traditional
+error
+message
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

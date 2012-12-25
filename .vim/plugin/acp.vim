@@ -161,7 +161,7 @@ command! -bar -narg=0 AutoComplPopLock    AcpLock
 command! -bar -narg=0 AutoComplPopUnlock  AcpUnlock
 "-----------------------------------------------------------------------------
 if g:acp_enableAtStartup
-  AcpEnable
+      AcpEnable
 endif
 "-----------------------------------------------------------------------------
 

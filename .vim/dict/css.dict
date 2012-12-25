@@ -146,16 +146,12 @@ import
 media
 charset
 opacity
-
 min-width 
 max-width 
 min-height 
 max-height
-
 left 
 right
-
-
 color 
 display 
 none
@@ -187,19 +183,12 @@ visibility
 hidden
 important
 inherit 
-
-
-
-
 clearfix
 before
 after
 line-height
 clear
 both
-
-
-
 /* ----- //Html5 tags ------------------------------------------------- */
 abbr 
 acronym 
@@ -308,12 +297,7 @@ u
 ul 
 var
 video
-
-
-
-
 /* ----- //CSS3 ------------------------------------------------- */
-
 border-color 
 border-top-color 
 border-right-color 
@@ -428,16 +412,5 @@ scroll
 overflow-x
 overflow-y
 
-
-
-
-
-
-
-
 /* ----- //license ------------------------------------------------- */
 license_alp2
-
-
-
-
