@@ -322,6 +322,14 @@ set nolist
 " join	"合并多行
 
 
+" -----------------------------------------------------------------
+" 大小写转换    
+" -----------------------------------------------------------------
+"  gU 大写
+"  gu 小写
+
+
+
 " -----------------------------------------------------------------        
 " nt 打开NERDTree
 " -----------------------------------------------------------------        
@@ -354,7 +362,7 @@ let NERDCompactSexyComs=1
 
 
 " -----------------------------------------------------------------
-"配色方案
+" 配色方案
 " -----------------------------------------------------------------
 colorscheme molokai
 
@@ -367,9 +375,9 @@ set t_Co=256
 
 
 " -----------------------------------------------------------------
-"设置粘贴
+" 设置粘贴 set Paste
 " -----------------------------------------------------------------
-"set paste
+
 nmap <Leader>sp :set paste<Cr>
 nmap <Leader>snp :set nopaste<Cr>
 
@@ -384,7 +392,7 @@ set fileencodings=utf-8,chinese,latin-1
 
 
 " -----------------------------------------------------------------
-"设置 文件dos格式或者unix 格式
+"设置 文件dos格式或者unix 格式,默认unix
 " -----------------------------------------------------------------
 "set ff=dos
 set ff=unix
@@ -427,7 +435,7 @@ map <C-g> :Grep  <C-R>=expand("<cword>")<CR> **/*.php
 
 
 " -----------------------------------------------------------------
-"光标横线
+" 光标横线高亮颜色配置
 " -----------------------------------------------------------------
 "highlight CursorLine guibg=lightblue ctermbg=lightgray
 
@@ -500,7 +508,7 @@ nmap <leader>setx :set filetype=xml<Cr>
 "-----------------------------------------------------------------    
 "Indent 对齐
 "-----------------------------------------------------------------
-"set g:js_indent = /location/to/javascript.vim
+" set g:js_indent = $HOME/.vim/indent/javascript.vim
 
 "自动对齐
 " set autoindent
@@ -514,7 +522,7 @@ set smartindent
 
 
 " -----------------------------------------------------------------
-"zencoding settings
+" zencoding settings
 " -----------------------------------------------------------------
 " let g:user_zen_expandabbr_key = '<c-y>'
 " let g:use_zen_complete_tag = 1
@@ -578,7 +586,7 @@ nmap <C-l> <C-w>l
 map <silent> <F9> :TlistToggle<Cr>
 
 "生成一个tags文件
-nmap <F10> <Esc>:!ctags --extra=+f -R *<CR><CR>
+nmap <F10> <Esc>:!ctags --extra=+f -R * -f tagfile 
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Auto_Open = 1
 let Tlist_Auto_Update = 1 
@@ -593,16 +601,23 @@ let Tlist_Exit_OnlyWindow=1
 let Tlist_Show_One_File = 1
 
 "设定linux系统中的ctags cmd 位置
-let Tlist_Ctags_Cmd = '/bin/ctags.exe'
+if has('win95') && !has('win32unix')
+    let Tlist_Ctags_Cmd = '/bin/ctags.exe'
+else
+    
+    let Tlist_Ctags_Cmd = '/bin/ctags'
+endif
+
+
 let Tlist_Show_Menu = 1
 
 "ctags set
-set tags=tags
+set tags=$HOME/tags_dir/tags_codeigniter
+" set tags+=./tags
+" set tags+=~/tag/tags
 set tags+=./tags
-set tags+=~/tag/tags
-set tags+=/cygdive/e/xampplite/htdocs/aitupu/tags
 
-"set tags+=./tags
+" 自动切换目录到当前文件所在的目录
 set autochdir
 
 "在右侧显示taglist窗口
@@ -611,6 +626,8 @@ let g:ctags_statusline=1
 
 " Override how taglist does javascript
 let g:tlist_javascript_settings ='javascript;f:function;c:class;m:method;p:property;v:global'
+
+" setting tagName color
 highlight MyTagListTagName guifg=blue ctermfg=blue
 
 "单击打开 tag name
@@ -637,7 +654,7 @@ imap <C-a> <esc>a
 "-----------------------------------------------------------------
 "snipMate settings
 "-----------------------------------------------------------------
-let g:snips_author = 'Jack.Chim 詹植柯 <ziikii1@qq.com>'
+let g:snips_author = 'Jack.Chim 詹植柯 ziikii1@qq.com'
 "autocmd FileType python set ft=python.django
 "autocmd FileType html set ft=htmldjango.html
 
@@ -935,8 +952,8 @@ let g:vimwiki_list = [{
 						\ 'template_ext': '.html',
 						\ 'auto_export': 1,
 						\ 'nested_syntaxes': {'Clang': 'c', 'Go': 'go', 'Lisp': 'lisp', 'PHP': 'php', 'JS': 'javascript', 'CSS': 'css', 'HTML': 'html', 'XML': 'xml', 'SQL': 'sql', 'Bash': 'sh', 'Vim': 'vim', 'Make': 'make', 'CMake': 'cmake'}}]
-" \ 'syntax': 'markdown',
 " \ 'ext': '.wiki',
+" \ 'syntax': 'markdown',
 
 let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,br,hr,div,del' 
 
@@ -1120,12 +1137,11 @@ autocmd BufReadPost *
 " -----------------------------------------------------------------
 "  设置字典 ~/.vim/dict/文件的路径
 " -----------------------------------------------------------------
-autocmd filetype javascript set dictionary=$HOME/dict/javascript.dict
-autocmd filetype css set dictionary=$HOME/dict/css.dict
+autocmd filetype javascript set dictionary=$HOME/.vim/dict/javascript.dict
+autocmd filetype css set dictionary=$HOME/.vim/dict/css.dict
 autocmd filetype html set dictionary=$HOME/.vim/dict/html.dict
 
 autocmd filetype php set dictionary=$HOME/.vim/dict/php.dict
-autocmd FileType php setlocal dict+=~/.vim/dict/php_funclist.txt
 autocmd filetype python set dictionary=$HOME/.vim/dict/python.dict
 autocmd filetype ruby set dictionary=$HOME/.vim/dict/ruby.dict
 autocmd filetype java set dictionary=$HOME/.vim/dict/java.dict
@@ -1134,6 +1150,7 @@ autocmd filetype objc set dictionary=$HOME/.vim/dict/objc.dict
 autocmd filetype c set dictionary=$HOME/.vim/dict/c.dict
 autocmd filetype cpp set dictionary=$HOME/.vim/dict/cpp.dict
 
+autocmd filetype sh set dictionary=$HOME/.vim/dict/sh.dict
 "-----------------------------------------------------------------    
 "netrw settings
 "-----------------------------------------------------------------
@@ -1161,20 +1178,20 @@ let g:netrw_sort_by = "name"
 "-----------------------------------------------------------------    
 "cscope 
 "-----------------------------------------------------------------
-"if has("cscope")
-"set csprg=/usr/local/bin/cscope
-"set csto=0
-"set cst
-"set nocsverb
-"" add any database in current directory
-"if filereadable("cscope.out")
-"cs add cscope.out
-"" else add database pointed to by environment
-"elseif $CSCOPE_DB != ""
-"cs add $CSCOPE_DB
-"endif
-"set csverb
-"endif
+" if has("cscope")
+" set csprg=/usr/local/bin/cscope
+" set csto=0
+" set cst
+" set nocsverb
+" " add any database in current directory
+" if filereadable("cscope.out")
+" cs add cscope.out
+" " else add database pointed to by environment
+" elseif $CSCOPE_DB != ""
+" cs add $CSCOPE_DB
+" endif
+" set csverb
+" endif
 
 map <C-_> :cstag <C-R>=expand("<cword>")<CR><CR>
 map g<C-]> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
@@ -1198,12 +1215,15 @@ inoremap <C-Y> <C-X><C-Y>
 
 
 "-----------------------------------------------------------------    
-"Smooth scrolling					
+"Smooth scrolling {{{1				
 "-----------------------------------------------------------------
 map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
 map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 
+" }}}1
 
 "=================================================================
 "个人配置结束
 "=================================================================
+
+" vim: set fdm=marker:
