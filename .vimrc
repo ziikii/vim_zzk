@@ -104,7 +104,7 @@ endif
 "=================================================================
 
 " -----------------------------------------------------------------        
-"更新 vimrc 配置
+"更新 vimrc 配置"{{{
 " -----------------------------------------------------------------        
 " Edit the vimrc file
 " :echo $MYVIMRC
@@ -118,9 +118,9 @@ map <leader>sv :so ~/.vimrc<CR>
 
 " 更新新添加的snippets
 map <leader>sn :so ~/.vim/plugin/snipMate.vim<CR>
+"}}}
 
-
-
+" 一般设置"{{{
 "文件类型自动识别
 filetype plugin on
 filetype indent on
@@ -168,11 +168,11 @@ set expandtab
 " set nocompatible
 
 " 保留历史记录
-set history=500
-
+set history=1500
+"}}}
 
 " -----------------------------------------------------------------        
-" 备份
+" 备份 Backup"{{{
 " -----------------------------------------------------------------
 "关闭自动备份
 set nobackup
@@ -195,34 +195,33 @@ set hidden
 "set undolevels=1000
 "set undoreload=10000
 
-
-
+"}}}
 
 
 
 "-----------------------------------------------------------------    
-"折叠代码方式
+"折叠代码方式"{{{
 "-----------------------------------------------------------------
 " 标签折叠
-"set foldmethod=marker
+set foldmethod=marker
 
 "手动设置折叠
 "set foldmethod=manual 
 
 "设置语法折叠
-set foldmethod=syntax
+" set foldmethod=syntax
 
 "缩进折叠
-"set foldmethod=indent
+" set foldmethod=indent
 
 "光标遇到折叠，折叠就打开
-"set foldopen=all
+" set foldopen=all
 
 "移开折叠时自动关闭折叠
-"set foldclose=all
+" set foldclose=all
 
 "窗口左边显示一小栏来标识各个折叠 多少列
-"set foldcolumn=1
+set foldcolumn=1
 
 " Code folding options
 nmap <leader>f0 :set foldlevel=0<CR>
@@ -235,18 +234,18 @@ nmap <leader>f6 :set foldlevel=6<CR>
 nmap <leader>f7 :set foldlevel=7<CR>
 nmap <leader>f8 :set foldlevel=8<CR>
 nmap <leader>f9 :set foldlevel=9<CR>
-
+"}}}
 
 "-----------------------------------------------------------------    
-"XMLFolding setting
+"XMLFolding setting"{{{
 "-----------------------------------------------------------------
 "需要设置foldmethod=syntax
 map <F4> :so ~/.vim/plugin/XMLFolding.vim<CR>
-
+"}}}
 
 
 "-----------------------------------------------------------------    
-"设置状态栏
+"设置状态栏"{{{
 "-----------------------------------------------------------------
 "总是显示状态栏status line
 set laststatus=2
@@ -255,10 +254,10 @@ set statusline=[%<%f]\ [%{&fileformat}]\ [%{&encoding}]\ [%{strlen(&ft)?&ft:'non
 
 "显示全目录
 "set statusline+=[%r%{getcwd()}%h]
-
+"}}}
 
 "-----------------------------------------------------------------    
-"窗口分割操作
+"窗口分割操作"{{{
 "-----------------------------------------------------------------
 " 垂直分割当前窗口
 nmap wv <C-w>v
@@ -269,26 +268,26 @@ nmap ws <C-w>s
 " 关闭当前窗口
 nmap wc <C-w>c
 
-
-
+"}}}
 
 
 
 
 "-----------------------------------------------------------------    
-"copy and paste
+"copy and paste"{{{
 "-----------------------------------------------------------------
 ""实现CTRL-S保存操作
 inoremap <C-s> <esc>:w<CR>
 
-""实现了CTRL-C、CTRL-V复制粘贴操作的映射
-nmap <C-c> yy
-inoremap <C-V> <Esc><Plug>set paste<cr><S-Ins>
-" inoremap <c-v> <esc>"+p<CR>i
+    ""实现了CTRL-C、CTRL-V复制粘贴操作的映射
+    nmap <C-c> yy
+    inoremap <C-V> <Esc><Plug>set paste<cr><S-Ins>
+    " inoremap <c-v> <esc>"+p<CR>i
 
+"}}}
 
 " -----------------------------------------------------------------
-" 显示回车换行符等特殊符号	
+" 显示回车换行符等特殊符号	"{{{
 " -----------------------------------------------------------------
 
 " 在默认情况下，Vim认为文件是由行组成的，并且文件最后一行是以<EOL>为结束符的。如果你想设置文件以<EOL>结束符结尾，则可以用以下命令：
@@ -306,32 +305,32 @@ set nolist
 " :%s/\n//g	"删除换行符
 " set textwidth	"设置行宽
 " set textwidth	"设置行边距
-
+"}}}
 
 " -----------------------------------------------------------------
-" 删除行末符 ^M    
+" 删除行末符 ^M    "{{{
 " -----------------------------------------------------------------
 " :%s/Ctrl+v Ctrl+m//gc
-
+"}}}
 
 " -----------------------------------------------------------------
-" 合并行    
+" 合并行    "{{{
 " -----------------------------------------------------------------
 " v模式选择
 " J 合并为一行
 " join	"合并多行
-
+"}}}
 
 " -----------------------------------------------------------------
-" 大小写转换    
+" 大小写转换    "{{{
 " -----------------------------------------------------------------
 "  gU 大写
 "  gu 小写
-
+"}}}
 
 
 " -----------------------------------------------------------------        
-" nt 打开NERDTree
+" nt 打开NERDTree"{{{
 " -----------------------------------------------------------------        
 
 map nt :NERDTree<CR>
@@ -357,12 +356,12 @@ let NERDSpaceDelims=1
 "多行注释时样子更好看
 let NERDCompactSexyComs=1  
 
-
+"}}}
 
 
 
 " -----------------------------------------------------------------
-" 配色方案
+" 配色方案"{{{
 " -----------------------------------------------------------------
 colorscheme molokai
 
@@ -371,36 +370,36 @@ let g:molokai_original = 1
 "enable 256 colors in vim 
 set t_Co=256
 
-
+"}}}
 
 
 " -----------------------------------------------------------------
-" 设置粘贴 set Paste
+" 设置粘贴 set Paste"{{{
 " -----------------------------------------------------------------
 
 nmap <Leader>sp :set paste<Cr>
 nmap <Leader>snp :set nopaste<Cr>
-
+"}}}
 
 
 " -----------------------------------------------------------------
-"解决中文乱码问题
+"解决中文乱码问题"{{{
 " -----------------------------------------------------------------
 set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1
-
+"}}}
 
 
 " -----------------------------------------------------------------
-"设置 文件dos格式或者unix 格式,默认unix
+"设置 文件dos格式或者unix 格式,默认unix"{{{
 " -----------------------------------------------------------------
 "set ff=dos
 set ff=unix
-
+"}}}
 
 
 " -----------------------------------------------------------------        
-"matchit.vim
+"matchit.vim"{{{
 " -----------------------------------------------------------------        
 " plugin - matchit.vim   对%命令进行扩展使得能在嵌套标签和语句之间跳转
 " " % 正向匹配      g% 反向匹配
@@ -409,20 +408,20 @@ set ff=unix
 
 "匹配括号的规则，增加针对html的<>
 set matchpairs=(:),{:},[:],<:>
-
+"}}}
 
 " -----------------------------------------------------------------        
-"设置自定义的<leader>快捷键
+"设置自定义的<leader>快捷键"{{{
 " -----------------------------------------------------------------        
 " let mapleader=","
 " let g:mapleader=","
 
 "clearing highlighted search
 nmap <silent> <leader>/ :nohlsearch<CR>
-
+"}}}
 
 " -----------------------------------------------------------------
-" 搜索函数定义的位置
+" 搜索函数定义的位置"{{{
 " Grep or vimgrep serching
 " -----------------------------------------------------------------
 "Grep
@@ -430,19 +429,19 @@ map <C-g> :Grep  <C-R>=expand("<cword>")<CR> **/*.php
 
 "vimgrep 
 " map <C-g> :vimgrep  <C-R>=expand("<cword>")<CR> **/*.php
-
+"}}}
 
 
 
 " -----------------------------------------------------------------
-" 光标横线高亮颜色配置
+" 光标横线高亮颜色配置"{{{
 " -----------------------------------------------------------------
 "highlight CursorLine guibg=lightblue ctermbg=lightgray
-
+"}}}
 
 
 " -----------------------------------------------------------------
-"AutoComplPop settings
+"AutoComplPop settings"{{{
 " -----------------------------------------------------------------
 let g:acp_behaviorSnipmateLength = 1
 let g:acp_behaviorKeywodLength = 1
@@ -451,16 +450,13 @@ let g:acp_behaviorCssOmniPopetyLength = 1
 
 "auto-popup is enabled at statup.
 let g:acp_enableAtStatup = 1
-
-
-
-
+"}}}
 
 
 
 
 "-----------------------------------------------------------------	
-"OmniCppComplete
+"OmniCppComplete"{{{
 "-----------------------------------------------------------------	
 " set nocp
 let OmniCpp_NamespaceSeach = 1
@@ -488,25 +484,25 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
 "打开javascript折叠
 let b:javascript_fold=1
-
+"}}}
 
 
 "-----------------------------------------------------------------    
-"set filetype
+"set filetype"{{{
 "-----------------------------------------------------------------
 "映射转换语法。快捷键：html:,1  php:,2  javascipt,3  css,4 defalu ,5
 ":set ft=nginx
-nmap <leader>seth :set filetype=html<Cr>
-nmap <leader>setc :set filetype=css<Cr>
-nmap <leader>setj :set filetype=javascript<Cr>
-nmap <leader>setp :set filetype=php<Cr>
-nmap <leader>setd :set filetype=default<Cr>
+nmap <leader>set1 :set filetype=html<Cr>
+nmap <leader>set2 :set filetype=css<Cr>
+nmap <leader>set3 :set filetype=javascript<Cr>
+nmap <leader>set4 :set filetype=php<Cr>
+nmap <leader>set5 :set filetype=default<Cr>
 nmap <leader>setx :set filetype=xml<Cr>
-
+"}}}
 
 
 "-----------------------------------------------------------------    
-"Indent 对齐
+"Indent 对齐"{{{
 "-----------------------------------------------------------------
 " set g:js_indent = $HOME/.vim/indent/javascript.vim
 
@@ -515,22 +511,20 @@ nmap <leader>setx :set filetype=xml<Cr>
 
 ""智能对齐方式
 set smartindent
-
-
-
+"}}}
 
 
 
 " -----------------------------------------------------------------
-" zencoding settings
+" zencoding settings"{{{
 " -----------------------------------------------------------------
 " let g:user_zen_expandabbr_key = '<c-y>'
 " let g:use_zen_complete_tag = 1
-
+"}}}
 
 
 "-----------------------------------------------------------------
-"编辑按键映射	
+"Tab 按键快捷映射	"{{{
 "-----------------------------------------------------------------
 ":tabclose		Close the current tab page.
 ":tabdo	    	Perform a command in every tab page.
@@ -567,26 +561,26 @@ map t6 6gt
 map t7 7gt
 map t8 8gt
 map t9 9gt
-
+"}}}
 
 "-----------------------------------------------------------------
-"窗口跳转
+"窗口跳转"{{{
 "-----------------------------------------------------------------
 "映射光标在窗口间移动的快捷键
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
-
+"}}}
 
 "-----------------------------------------------------------------
-"taglist settings
+"Ctags Taglist settings"{{{
 "-----------------------------------------------------------------
 "设置F9键 打开 taglist或者关闭
 map <silent> <F9> :TlistToggle<Cr>
 
 "生成一个tags文件
-nmap <F10> <Esc>:!ctags --extra=+f -R * -f tagfile 
+nmap <F10> <Esc>:!ctags --extra=+f -R *  
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Auto_Open = 1
 let Tlist_Auto_Update = 1 
@@ -601,21 +595,25 @@ let Tlist_Exit_OnlyWindow=1
 let Tlist_Show_One_File = 1
 
 "设定linux系统中的ctags cmd 位置
-if has('win95') && !has('win32unix')
-    let Tlist_Ctags_Cmd = '/bin/ctags.exe'
+
+" Check if is under cygwin
+if has('win32unix') 
+    let Tlist_Ctags_Cmd = '/usr/bin/ctags.exe'
 else
-    
-    let Tlist_Ctags_Cmd = '/bin/ctags'
+    let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 endif
+
 
 
 let Tlist_Show_Menu = 1
 
 "ctags set
-set tags=$HOME/tags_dir/tags_codeigniter
 " set tags+=./tags
 " set tags+=~/tag/tags
+set tags=tags
 set tags+=./tags
+set tags+=$HOME/tags_dir/tags
+
 
 " 自动切换目录到当前文件所在的目录
 set autochdir
@@ -636,10 +634,10 @@ let Tlist_Use_SingleClick = 1
 "Tlist_WinHeight 
 let Tlist_WinHeight = 20
 
-
+"}}}
 
 "-----------------------------------------------------------------
-""插入模式的移动
+""插入模式的移动"{{{
 "-----------------------------------------------------------------
 imap <C-j> <Down>
 imap <C-k> <Up>
@@ -648,19 +646,19 @@ imap <C-l> <right>
 imap <C-o> <esc>o
 imap <C-a> <esc>a
 
-
+"}}}
 
 
 "-----------------------------------------------------------------
-"snipMate settings
+"snipMate settings"{{{
 "-----------------------------------------------------------------
 let g:snips_author = 'Jack.Chim 詹植柯 ziikii1@qq.com'
 "autocmd FileType python set ft=python.django
 "autocmd FileType html set ft=htmldjango.html
-
+"}}}
 
 "-----------------------------------------------------------------
-"phpfolding settings
+"phpfolding settings"{{{
 "-----------------------------------------------------------------
 map <F5> <Esc>:EnableFastPHPFolds<Cr>
 map <F6> <Esc>:EnablePHPFolds<Cr>
@@ -668,10 +666,10 @@ map <F7> <Esc>:DisablePHPFolds<Cr>
 
 "默认不显示 phpfolding
 let g:DisableAutoPHPFolding = 1   
-
+"}}}
 
 " -----------------------------------------------------------------
-" bufExplorer插件的设置	
+" bufExplorer插件的设置	"{{{
 " -----------------------------------------------------------------
 " let g:bufExplorerSortBy='mru'
 " let g:bufExplorerSplitRight=0     
@@ -679,10 +677,10 @@ let g:DisableAutoPHPFolding = 1
 " let g:bufExplorerSplitVertSize = 30 
 " let g:bufExplorerUseCurrentWindow=1 
 " autocmd BufWinEnter \[Buf\ List\] setl nonumber
-
+"}}}
 
 " -----------------------------------------------------------------
-" winManager插件的设置	
+" winManager插件的设置	"{{{
 " -----------------------------------------------------------------
 " let g:winManagerWidth = 30
 "let winManagerWindowLayout = 'NERDTree | BufExplorer'
@@ -690,40 +688,40 @@ let g:DisableAutoPHPFolding = 1
 nmap <silent> <leader>wm :WMToggle<cr> 
 " let loaded_winmanager = 1
 
-
+"}}}
 
 
 "-----------------------------------------------------------------
-"lookupfile settings
+"lookupfile settings"{{{
 "-----------------------------------------------------------------
 "map \lut :LUTags<CR>
 "map \lup :LUPath<CR>
 "map \lub :LUBufs<CR>
 "map \luw :LUWalk<CR> 
 "map \lua :LUArgs<CR> 
-
+"}}}
 
 "-----------------------------------------------------------------
-"project settings
+"project settings"{{{
 "-----------------------------------------------------------------
 "map \p :Project<CR> 
 
 "禁止载入 project 插件
 "let loaded_project = 1
-
+"}}}
 
 "-----------------------------------------------------------------
-"Grep settings 	
+"Grep settings 	"{{{
 "-----------------------------------------------------------------
-"grep settings
+
 nnoremap <silent> <F3> :Grep<CR>
 let Grep_Cygwin_Find = 1
-
+"}}}
 
 
 
 "-----------------------------------------------------------------
-"vcscommand.vim : CVS/SVN/SVK/git/hg/bzr integration plugin 	
+"vcscommand.vim : CVS/SVN/SVK/git/hg/bzr integration plugin 	"{{{
 "CVSROOT should be set to something like:
 ":ext:user@host:/path_to_repository
 "-----------------------------------------------------------------
@@ -809,44 +807,44 @@ nmap ,gitc :! git checkout [branch-name]
 nmap ,gitm :! git mergy [branch-name]
 nmap ,gitssh :! ssh -T git@github.com
 
-
+"}}}
 
 " -----------------------------------------------------------------
-" AutoCloseTag	
+" AutoCloseTag	"{{{
 "Make it so AutoCloseTag works for xml and xhtml files as well
 " -----------------------------------------------------------------
 " au FileType html so ~/.vim/ftplugin/html_autoclosetag.vim
-
+"}}}
 
 " -----------------------------------------------------------------
-" Fuzzy Find file, tree, buffer, line	
+" Fuzzy Find file, tree, buffer, line	"{{{
 " -----------------------------------------------------------------
 nmap <leader>ff :FufFile **/<CR>
 nmap <leader>ft :FufFile<CR>
 nmap <leader>fb :FufBuffer<CR>
 nmap <leader>fl :FufLine<CR>
 nmap <leader>fr	:FufRenewCache<CR>
-
+"}}}
 
 " -----------------------------------------------------------------
-" php-doc commands	
+" php-doc commands	"{{{
 "inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i
 "nnoremap <C-P> :call PhpDocSingle()<CR>
 "vnoremap <C-P> :call PhpDocRange()<CR> 
 " -----------------------------------------------------------------
 "nmap <leader>pd :call PhpDocSingle()<CR>
 "vmap <leader>pd :call PhpDocRange()<CR>
-
+"}}}
 
 " -----------------------------------------------------------------
-" JSON	
+" JSON	"{{{
 " -----------------------------------------------------------------
 nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
-
+"}}}
 
 
 " -----------------------------------------------------------------
-" quickfix	
+" quickfix	"{{{
 " -----------------------------------------------------------------
 " :cc                显示详细错误信息 ( :help :cc )
 " :cp                跳到上一个错误 ( :help :cp )
@@ -855,7 +853,7 @@ nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
 " :cw                如果有错误列表，则打开quickfix窗口 ( :help :cw )
 " :col               到前一个旧的错误列表 ( :help :col )
 " :cnew              到后一个较新的错误列表 ( :help :cnew ) 
-" " Toggle the quickfix window {{{
+" " Toggle the quickfix window 
 " " From Steve Losh,
 " http://learnvimscriptthehardway.stevelosh.com/chapters/38.html 
 " -----------------------------------------------------------------
@@ -879,11 +877,11 @@ function! s:QuickfixToggle()
 				let g:quickfix_is_open = 1
 		endif
 endfunction
-
+"}}}
 
 
 " -----------------------------------------------------------------
-" bufExplorer setting 	
+" bufExplorer setting 	"{{{
 " -----------------------------------------------------------------
 " To start exploring in the current window, use: >
 " \be   or   :BufExplorer
@@ -891,22 +889,22 @@ endfunction
 " \bs   or   :BufExplorerHorizontalSplit
 " To start exploring in a newly split vertical window, use: >
 " \bv   or   :BufExplorerVerticalSplit
-
+"}}}
 
 
 
 "-----------------------------------------------------------------
-" Quickly  get out of insert mode without your fingers having to leave the
+" Quickly  get out of insert mode without your fingers having to leave the"{{{
 " home row (either use 'jj' or 'jk')
 "-----------------------------------------------------------------
 inoremap jj <Esc>
 inoremap kk <Esc>
-
+"}}}
 
 
 
 " -----------------------------------------------------------------
-" vimwiki setting 	
+" vimwiki setting 	"{{{
 " -----------------------------------------------------------------
 
 " 用法
@@ -1044,12 +1042,12 @@ nmap == <Plug>VimwikiAddHeaderLevel
 
 " Remove header level.
 nmap -- <Plug>VimwikiRemoveHeaderLevel
-
+"}}}
 
 
 
 " -----------------------------------------------------------------
-" 编译 && 运行	
+" 编译 && 运行	"{{{
 " -----------------------------------------------------------------
 " 编译源文件
 func! CompileCode()
@@ -1080,10 +1078,10 @@ func! RunCode()
 				exec "! ./app"
 		endif
 endfunc
-
+"}}}
 
 " -----------------------------------------------------------------	
-" ConqueTerm 
+" ConqueTerm "{{{
 " -----------------------------------------------------------------
 " Usage 
 " :ConqueTerm <command>
@@ -1121,21 +1119,23 @@ let g:ConqueTerm_SendFileKey = '<C-F10>'
 let g:ConqueTerm_SendVisKey = '<C-F9>'
 let g:ConqueTerm_TERM = 'xterm'
 nmap <F2> :ConqueTermSplit bash<CR>
-
+"}}}
 
 
 
 "-----------------------------------------------------------------    
-"vim记忆上次编辑的位置
+"vim记忆上次编辑的位置"{{{
 "-----------------------------------------------------------------
 
 autocmd BufReadPost *
 						\ if line("'\"")>0&&line("'\"")<=line("$") |
 						\   exe "normal g'\"" |
 						\ endif
+"}}}
+
 
 " -----------------------------------------------------------------
-"  设置字典 ~/.vim/dict/文件的路径
+"  设置字典 ~/.vim/dict/文件的路径"{{{
 " -----------------------------------------------------------------
 autocmd filetype javascript set dictionary=$HOME/.vim/dict/javascript.dict
 autocmd filetype css set dictionary=$HOME/.vim/dict/css.dict
@@ -1151,8 +1151,13 @@ autocmd filetype c set dictionary=$HOME/.vim/dict/c.dict
 autocmd filetype cpp set dictionary=$HOME/.vim/dict/cpp.dict
 
 autocmd filetype sh set dictionary=$HOME/.vim/dict/sh.dict
+
+"}}}
+
+
+
 "-----------------------------------------------------------------    
-"netrw settings
+"netrw settings"{{{
 "-----------------------------------------------------------------
 "vim scp://root@198.71.90.13//root/
 "p    Preview the file 
@@ -1174,9 +1179,11 @@ let g:netrw_cygwin = 0
 let g:netrw_fastbrowse = 2
 let g:netrw_hide = 0
 let g:netrw_sort_by = "name"
+"}}}
+
 
 "-----------------------------------------------------------------    
-"cscope 
+"cscope "{{{
 "-----------------------------------------------------------------
 " if has("cscope")
 " set csprg=/usr/local/bin/cscope
@@ -1205,22 +1212,23 @@ nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
+"}}}
 
 "-----------------------------------------------------------------    
-"Scrolling in Insert mode			
+"Scrolling in Insert mode			"{{{
 "-----------------------------------------------------------------
 inoremap <C-E> <C-X><C-E>
 inoremap <C-Y> <C-X><C-Y>
-
+"}}}
 
 
 "-----------------------------------------------------------------    
-"Smooth scrolling {{{1				
+"Smooth scrolling "{{{
 "-----------------------------------------------------------------
 map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
 map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
+"}}}
 
-" }}}1
 
 "=================================================================
 "个人配置结束
