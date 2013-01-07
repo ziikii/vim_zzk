@@ -100,15 +100,12 @@ endif
 
 
 "=================================================================
-"个人设置开始
+" 个人设置开始
 "=================================================================
 
 " -----------------------------------------------------------------        
 "更新 vimrc 配置"{{{
 " -----------------------------------------------------------------        
-" Edit the vimrc file
-" :echo $MYVIMRC
-map <leader>vimrc :source ~/.vimrc<cr>
 
 " 编辑vim个人配置文件
 map <leader>ev :e  ~/.vimrc<CR>
@@ -164,9 +161,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" compatible is not set
-" set nocompatible
-
 " 保留历史记录
 set history=1500
 "}}}
@@ -187,7 +181,7 @@ set hidden
 
 " backups
 "set backupdir=~/vim_backup_data/backup/
-"" swap files
+" swap files
 "set directory=~/vim_backup_data/swap/
 
 "set undofile
@@ -209,7 +203,7 @@ set foldmethod=marker
 "set foldmethod=manual 
 
 "设置语法折叠
-" set foldmethod=syntax
+set foldmethod=syntax
 
 "缩进折叠
 " set foldmethod=indent
@@ -240,7 +234,7 @@ nmap <leader>f9 :set foldlevel=9<CR>
 "XMLFolding setting"{{{
 "-----------------------------------------------------------------
 "需要设置foldmethod=syntax
-map <F4> :so ~/.vim/plugin/XMLFolding.vim<CR>
+" map <F4> :so ~/.vim/plugin/XMLFolding.vim<CR>
 "}}}
 
 
@@ -274,15 +268,17 @@ nmap wc <C-w>c
 
 
 "-----------------------------------------------------------------    
-"copy and paste"{{{
+"copy and paste 快捷方式映射"{{{
 "-----------------------------------------------------------------
 ""实现CTRL-S保存操作
 inoremap <C-s> <esc>:w<CR>
 
-    ""实现了CTRL-C、CTRL-V复制粘贴操作的映射
-    nmap <C-c> yy
-    inoremap <C-V> <Esc><Plug>set paste<cr><S-Ins>
-    " inoremap <c-v> <esc>"+p<CR>i
+" CTRL+C 一般模式下复制一行
+nmap <C-c> yy
+
+" CTRL+V 一般模式下粘贴
+inoremap <C-v> <esc>p<cr>
+
 
 "}}}
 
@@ -342,7 +338,7 @@ let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
 
 "是否默认显示书签列表
-"let NERDTreeShowBookmarks = 1
+let NERDTreeShowBookmarks = 0
 
 "打开文件后是否关闭NerdTree窗口
 let NERDTreeQuitOnOpen = 0
@@ -361,7 +357,7 @@ let NERDCompactSexyComs=1
 
 
 " -----------------------------------------------------------------
-" 配色方案"{{{
+" 配色方案 "{{{
 " -----------------------------------------------------------------
 colorscheme molokai
 
@@ -376,9 +372,9 @@ set t_Co=256
 " -----------------------------------------------------------------
 " 设置粘贴 set Paste"{{{
 " -----------------------------------------------------------------
-
 nmap <Leader>sp :set paste<Cr>
 nmap <Leader>snp :set nopaste<Cr>
+
 "}}}
 
 
@@ -401,19 +397,20 @@ set ff=unix
 " -----------------------------------------------------------------        
 "matchit.vim"{{{
 " -----------------------------------------------------------------        
+" Usage:
 " plugin - matchit.vim   对%命令进行扩展使得能在嵌套标签和语句之间跳转
 " " % 正向匹配      g% 反向匹配
 " " [% 定位块首     ]% 定位块尾
-" let loaded_matchit = 1
+let loaded_matchit = 1
 
 "匹配括号的规则，增加针对html的<>
-set matchpairs=(:),{:},[:],<:>
+" set matchpairs=(:),{:},[:],<:>
 "}}}
 
 " -----------------------------------------------------------------        
 "设置自定义的<leader>快捷键"{{{
 " -----------------------------------------------------------------        
-" let mapleader=","
+
 " let g:mapleader=","
 
 "clearing highlighted search
@@ -436,7 +433,7 @@ map <C-g> :Grep  <C-R>=expand("<cword>")<CR> **/*.php
 " -----------------------------------------------------------------
 " 光标横线高亮颜色配置"{{{
 " -----------------------------------------------------------------
-"highlight CursorLine guibg=lightblue ctermbg=lightgray
+" highlight CursorLine guibg=lightblue ctermbg=lightgray
 "}}}
 
 
@@ -445,50 +442,31 @@ map <C-g> :Grep  <C-R>=expand("<cword>")<CR> **/*.php
 " -----------------------------------------------------------------
 let g:acp_behaviorSnipmateLength = 1
 let g:acp_behaviorKeywodLength = 1
-let g:acp_behaviorHtmlOmniLength = 1
+let g:acp_behaviorHtmlOmniLength = 0
 let g:acp_behaviorCssOmniPopetyLength = 1
 
 "auto-popup is enabled at statup.
 let g:acp_enableAtStatup = 1
 "}}}
 
+" -----------------------------------------------------------------
+" Setting OmniCppComplete     "{{{
+" -----------------------------------------------------------------
+set nocp 
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_DisplayMode = 0
+"}}}
 
 
 
-"-----------------------------------------------------------------	
-"OmniCppComplete"{{{
-"-----------------------------------------------------------------	
-" set nocp
-let OmniCpp_NamespaceSeach = 1
-let OmniCpp_GlobalScopeSeach = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPototypeInAbb = 1 " show function paametes
-let OmniCpp_MayCompleteDot = 1 " autocomplete afte .
-let OmniCpp_MayCompleteAow = 1 " autocomplete afte ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete afte ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-" automatically open and close the popup menu / peview window
-"au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif 
-"set completeopt=menuone,menu,longest,preview
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
-"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-"autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-"autocmd FileType c set omnifunc=ccomplete#Complete
-"au BufNewFile,Bufread,BufEnter *.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
-"autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
-
-
-
-"打开javascript折叠
-let b:javascript_fold=1
+"打开javascript折叠"{{{
+" let b:javascript_fold=1
 "}}}
 
 
 "-----------------------------------------------------------------    
-"set filetype"{{{
+"Set filetype "{{{
 "-----------------------------------------------------------------
 "映射转换语法。快捷键：html:,1  php:,2  javascipt,3  css,4 defalu ,5
 ":set ft=nginx
@@ -507,16 +485,17 @@ nmap <leader>setx :set filetype=xml<Cr>
 " set g:js_indent = $HOME/.vim/indent/javascript.vim
 
 "自动对齐
-" set autoindent
+set autoindent
 
 ""智能对齐方式
-set smartindent
+" set smartindent
+
 "}}}
 
 
 
 " -----------------------------------------------------------------
-" zencoding settings"{{{
+" Zencoding settings"{{{
 " -----------------------------------------------------------------
 " let g:user_zen_expandabbr_key = '<c-y>'
 " let g:use_zen_complete_tag = 1
@@ -524,8 +503,9 @@ set smartindent
 
 
 "-----------------------------------------------------------------
-"Tab 按键快捷映射	"{{{
+" Tab 按键快捷映射	"{{{
 "-----------------------------------------------------------------
+" Usage:
 ":tabclose		Close the current tab page.
 ":tabdo	    	Perform a command in every tab page.
 ":tabedit		Edit a file in a new tab page.
@@ -576,11 +556,12 @@ nmap <C-l> <C-w>l
 "-----------------------------------------------------------------
 "Ctags Taglist settings"{{{
 "-----------------------------------------------------------------
-"设置F9键 打开 taglist或者关闭
+
+" Setting F9 Button to toggle taglist.
 map <silent> <F9> :TlistToggle<Cr>
 
 "生成一个tags文件
-nmap <F10> <Esc>:!ctags --extra=+f -R *  
+nmap <F10> <Esc>:!ctags -R .
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Auto_Open = 1
 let Tlist_Auto_Update = 1 
@@ -608,8 +589,6 @@ endif
 let Tlist_Show_Menu = 1
 
 "ctags set
-" set tags+=./tags
-" set tags+=~/tag/tags
 set tags=tags
 set tags+=./tags
 set tags+=$HOME/tags_dir/tags
@@ -665,7 +644,7 @@ map <F6> <Esc>:EnablePHPFolds<Cr>
 map <F7> <Esc>:DisablePHPFolds<Cr>
 
 "默认不显示 phpfolding
-let g:DisableAutoPHPFolding = 1   
+let g:DisableAutoPHPFolding = 0
 "}}}
 
 " -----------------------------------------------------------------
@@ -819,7 +798,7 @@ nmap ,gitssh :! ssh -T git@github.com
 " -----------------------------------------------------------------
 " Fuzzy Find file, tree, buffer, line	"{{{
 " -----------------------------------------------------------------
-nmap <leader>ff :FufFile **/<CR>
+nmap <leader>ff :FufFile *<CR>
 nmap <leader>ft :FufFile<CR>
 nmap <leader>fb :FufBuffer<CR>
 nmap <leader>fl :FufLine<CR>
@@ -907,7 +886,7 @@ inoremap kk <Esc>
 " vimwiki setting 	"{{{
 " -----------------------------------------------------------------
 
-" 用法
+" Usage:
 " :VimWiki2HTML：将当前页面编译成HTML文件
 " :VimWikiAll2HTML：将本wiki所有源文件都编译成HTML文件（如果文件很多，将花费较长时间）
 " :VimWikiGoTo：转到指定的wiki页面
@@ -922,15 +901,15 @@ inoremap kk <Esc>
 " <Leader>wt -- Open default wiki index file in a new tab.
 " [count]<Leader>wt or <Plug>VimwikiTabIndex
 
-" <Leader>ws -- Select and open wiki index file.
-" <Leader>wd -- Delete wiki file you are in.
-" <Leader>wr -- Rename wiki file you are in.
-" <Enter> -- Folow/Create wiki link
+" <Leader>ws    -- Select and open wiki index file.
+" <Leader>wd    -- Delete wiki file you are in.
+" <Leader>wr    -- Rename wiki file you are in.
+" <Enter>       -- Folow/Create wiki link
 " <Shift-Enter> -- Split and folow/create wiki link
-" <Ctrl-Enter> -- Vertical split and folow/create wiki link
-" <Backspace> -- Go back to parent(previous) wiki link
-" <Tab> -- Find next wiki link
-" <Shift-Tab> -- Find previous wiki link 
+" <Ctrl-Enter>  -- Vertical split and folow/create wiki link
+" <Backspace>   -- Go back to parent(previous) wiki link
+" <Tab>         -- Find next wiki link
+" <Shift-Tab>   -- Find previous wiki link 
 
 "Vimwiki 和 snipMate 的 <Tab> 热键冲突，可以将 $VIM/vimfiles/ftplugin/vimwiki.vim 中的第 293 行的 换成其他的热键
 "修改399行 更改<tab>键为<C-tab>
@@ -1022,6 +1001,7 @@ nmap <Leader>wmdt <Plug>VimwikiTabMakeDiaryNote
 " Wiki syntax 
 " Links to directories (ending with a "/") are also supported: >
 " [[/home/somebody/|Home Directory]]
+" HIGHLIGHT HEADER SYNTAX COLOR
 hi VimwikiHeader1  ctermbg=DarkBlue ctermfg=white
 hi VimwikiHeader2  ctermbg=161 ctermfg=white
 hi VimwikiHeader3  ctermbg=208 ctermfg=white
@@ -1030,12 +1010,6 @@ hi VimwikiHeader5  ctermbg=DarkMagenta ctermfg=white
 hi VimwikiHeader6  ctermbg=DarkGrey ctermfg=white
 
 let g:vimwiki_html_header_numbering_sym = '.'
-" = Header level 1 =
-" == Header level 2 ==
-" === Header level 3 ===~
-" ==== Header level 4 ====~
-" ===== Header level 5 =====~
-" ====== Header level 6 ======~
 
 " Add header level. Create if needed.
 nmap == <Plug>VimwikiAddHeaderLevel
@@ -1088,37 +1062,40 @@ endfunc
 " :ConqueTermSplit <command>
 " :ConqueTermVSplit <command>
 " :ConqueTermTab <command> 
+if has('unix')
 
-" set python versions 
-let g:ConqueTerm_PyVersion = 2
+    " set python versions 
+    let g:ConqueTerm_PyVersion = 2
 
-" set enable fast mode 
-let g:ConqueTerm_FastMode = 0
+    " set enable fast mode 
+    let g:ConqueTerm_FastMode = 0
 
-" terminal colors will always be enabled.
-let g:ConqueTerm_Color = 0
-let g:ConqueTerm_ColorMode = 'conceal'
-" Session support 
-let g:ConqueTerm_SessionSupport = 0
+    " terminal colors will always be enabled.
+    let g:ConqueTerm_Color = 0
+    let g:ConqueTerm_ColorMode = 'conceal'
+    " Session support 
+    let g:ConqueTerm_SessionSupport = 0
 
-"Keep update terminal buffer 
-let g:ConqueTerm_ReadUnfocused = 1
+    "Keep update terminal buffer 
+    let g:ConqueTerm_ReadUnfocused = 1
 
-"Close buffer when program exits 
-let g:ConqueTerm_CloseOnEnd = 0
+    "Close buffer when program exits 
+    let g:ConqueTerm_CloseOnEnd = 0
 
-let g:ConqueTerm_InsertOnEnter = 0
-let g:ConqueTerm_StartMessages = 0
-let g:ConqueTerm_PromptRegex = '^\w\+@[0-9A-Za-z_.-]\+:[0-9A-Za-z_./\~,:-]\+\$'
+    let g:ConqueTerm_InsertOnEnter = 0
+    let g:ConqueTerm_StartMessages = 0
+    let g:ConqueTerm_PromptRegex = '^\w\+@[0-9A-Za-z_.-]\+:[0-9A-Za-z_./\~,:-]\+\$'
 
-let g:ConqueTerm_Syntax = 'conque_term'
-let g:ConqueTerm_EscKey = '<Esc>'
-let g:ConqueTerm_ToggleKey = '<C-F8>'
-let g:ConqueTerm_ExecFileKey = '<C-F11>'
-let g:ConqueTerm_SendFileKey = '<C-F10>'
-let g:ConqueTerm_SendVisKey = '<C-F9>'
-let g:ConqueTerm_TERM = 'xterm'
-nmap <F2> :ConqueTermSplit bash<CR>
+    let g:ConqueTerm_Syntax = 'conque_term'
+    let g:ConqueTerm_EscKey = '<Esc>'
+    let g:ConqueTerm_ToggleKey = '<C-F8>'
+    let g:ConqueTerm_ExecFileKey = '<C-F11>'
+    let g:ConqueTerm_SendFileKey = '<C-F10>'
+    let g:ConqueTerm_SendVisKey = '<C-F9>'
+    let g:ConqueTerm_TERM = 'xterm'
+    nmap <F2> :ConqueTermSplit bash<CR>
+
+endif
 "}}}
 
 
@@ -1140,16 +1117,13 @@ autocmd BufReadPost *
 autocmd filetype javascript set dictionary=$HOME/.vim/dict/javascript.dict
 autocmd filetype css set dictionary=$HOME/.vim/dict/css.dict
 autocmd filetype html set dictionary=$HOME/.vim/dict/html.dict
-
 autocmd filetype php set dictionary=$HOME/.vim/dict/php.dict
 autocmd filetype python set dictionary=$HOME/.vim/dict/python.dict
 autocmd filetype ruby set dictionary=$HOME/.vim/dict/ruby.dict
 autocmd filetype java set dictionary=$HOME/.vim/dict/java.dict
 autocmd filetype objc set dictionary=$HOME/.vim/dict/objc.dict
-
 autocmd filetype c set dictionary=$HOME/.vim/dict/c.dict
 autocmd filetype cpp set dictionary=$HOME/.vim/dict/cpp.dict
-
 autocmd filetype sh set dictionary=$HOME/.vim/dict/sh.dict
 
 "}}}
@@ -1215,7 +1189,7 @@ nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 "}}}
 
 "-----------------------------------------------------------------    
-"Scrolling in Insert mode			"{{{
+"Scrolling in Insert mode "{{{
 "-----------------------------------------------------------------
 inoremap <C-E> <C-X><C-E>
 inoremap <C-Y> <C-X><C-Y>
@@ -1231,7 +1205,7 @@ map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 
 
 "=================================================================
-"个人配置结束
+" 个人配置结束
 "=================================================================
 
 " vim: set fdm=marker:
