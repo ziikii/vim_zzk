@@ -359,9 +359,7 @@ let NERDCompactSexyComs=1
 " -----------------------------------------------------------------
 " 配色方案 "{{{
 " -----------------------------------------------------------------
-colorscheme molokai
-
-let g:molokai_original = 1
+colorscheme cook
 
 "enable 256 colors in vim 
 set t_Co=256
