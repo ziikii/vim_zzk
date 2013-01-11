@@ -1,1 +1,1 @@
-nal vim configuration.
+Personal vim configuration.
