@@ -163,31 +163,36 @@ set expandtab
 
 " 保留历史记录
 set history=1500
+
+" Disable error bells 关闭错误提醒音
+set noerrorbells
+
+
 "}}}
 
 " -----------------------------------------------------------------        
 " 备份 Backup"{{{
 " -----------------------------------------------------------------
-"关闭自动备份
-set nobackup
-"set backup
+" 关闭自动备份
+" set nobackup
+set backup
 
-"不使用swap文件
-set noswapfile
-"set swapfile
+" 不使用swap文件
+" set noswapfile
+set swapfile
 
-"当前 buffer 可放在 bg 而不用写入磁盘
+" 当前 buffer 可放在 bg 而不用写入磁盘
 set hidden
 
-" backups
-"set backupdir=~/vim_backup_data/backup/
-" swap files
-"set directory=~/vim_backup_data/swap/
+" Backups
+set backupdir=~/vim_backup_data/backup/
+" Swap files
+set directory=~/vim_backup_data/swap/
 
-"set undofile
-"set undodir=~/vim_backup_data/undodir/
-"set undolevels=1000
-"set undoreload=10000
+set undofile
+set undodir=~/vim_backup_data/undodir/
+set undolevels=1000
+set undoreload=1000
 
 "}}}
 
@@ -197,13 +202,13 @@ set hidden
 "折叠代码方式"{{{
 "-----------------------------------------------------------------
 " 标签折叠
-set foldmethod=marker
+" set foldmethod=marker
 
 "手动设置折叠
-"set foldmethod=manual 
+set foldmethod=manual 
 
 "设置语法折叠
-set foldmethod=syntax
+" set foldmethod=syntax
 
 "缩进折叠
 " set foldmethod=indent
@@ -359,6 +364,7 @@ let NERDCompactSexyComs=1
 " -----------------------------------------------------------------
 " 配色方案 "{{{
 " -----------------------------------------------------------------
+" Personal Colorscheme
 colorscheme cook
 
 "enable 256 colors in vim 
@@ -368,10 +374,13 @@ set t_Co=256
 
 
 " -----------------------------------------------------------------
-" 设置粘贴 set Paste"{{{
+" 设置粘贴 Set Paste"{{{
 " -----------------------------------------------------------------
 nmap <Leader>sp :set paste<Cr>
 nmap <Leader>snp :set nopaste<Cr>
+
+" \1 is set pastetoggle.
+nmap <Leader>1 :set invpaste<CR>
 
 "}}}
 
@@ -817,6 +826,11 @@ nmap <leader>fr	:FufRenewCache<CR>
 " JSON	"{{{
 " -----------------------------------------------------------------
 nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+
+if has("autocmd")
+	" Treat .json files as .js
+	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+endif
 "}}}
 
 
@@ -1123,6 +1137,7 @@ autocmd filetype objc set dictionary=$HOME/.vim/dict/objc.dict
 autocmd filetype c set dictionary=$HOME/.vim/dict/c.dict
 autocmd filetype cpp set dictionary=$HOME/.vim/dict/cpp.dict
 autocmd filetype sh set dictionary=$HOME/.vim/dict/sh.dict
+autocmd filetype vim set dictionary=$HOME/.vim/dict/vim.dict
 
 "}}}
 
