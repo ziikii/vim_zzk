@@ -4,7 +4,7 @@
 " Last Modified: 十月 12, 2012
 " An example for a vimrc file.
 "
-" To use it, copy it to
+" To use it, copy it to"{{{
 "     for Unix and OS/2:  ~/.vimrc
 "	      for Amiga:  s:.vimrc
 "  for MS-DOS and Win32:  $VIM\_vimrc
@@ -97,7 +97,7 @@ if !exists(":DiffOrig")
 								\ | wincmd p | diffthis
 endif
 
-
+"}}}
 
 "=================================================================
 " 个人设置开始
@@ -1129,9 +1129,9 @@ autocmd BufReadPost *
 " -----------------------------------------------------------------
 "  设置字典 ~/.vim/dict/文件的路径"{{{
 " -----------------------------------------------------------------
-autocmd filetype javascript set dictionary=$HOME/.vim/dict/javascript.dict
+autocmd filetype javascript,js set dictionary=$HOME/.vim/dict/javascript.dict
 autocmd filetype css set dictionary=$HOME/.vim/dict/css.dict
-autocmd filetype html set dictionary=$HOME/.vim/dict/html.dict
+autocmd filetype html,xhtml set dictionary=$HOME/.vim/dict/html.dict
 autocmd filetype php set dictionary=$HOME/.vim/dict/php.dict
 autocmd filetype python set dictionary=$HOME/.vim/dict/python.dict
 autocmd filetype ruby set dictionary=$HOME/.vim/dict/ruby.dict
@@ -1219,7 +1219,16 @@ inoremap <C-Y> <C-X><C-Y>
 map <C-U> <C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>
 map <C-D> <C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>
 "}}}
+ 
 
+" Automatic Pair Mapping"{{{
+inoremap ( ()<Esc>i 
+inoremap ) <c-r>=ClosePair(')')<CR> 
+inoremap [ []<Esc>i 
+inoremap { {}<Esc>i 
+inoremap ' ''<Esc>i 
+inoremap " ""<Esc>i
+"}}}
 
 "=================================================================
 " 个人配置结束
