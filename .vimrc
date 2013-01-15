@@ -233,6 +233,9 @@ nmap <leader>f6 :set foldlevel=6<CR>
 nmap <leader>f7 :set foldlevel=7<CR>
 nmap <leader>f8 :set foldlevel=8<CR>
 nmap <leader>f9 :set foldlevel=9<CR>
+
+nmap <Leader>2 :set foldmethod=manual
+
 "}}}
 
 "-----------------------------------------------------------------    
@@ -1138,6 +1141,7 @@ autocmd filetype c set dictionary=$HOME/.vim/dict/c.dict
 autocmd filetype cpp set dictionary=$HOME/.vim/dict/cpp.dict
 autocmd filetype sh set dictionary=$HOME/.vim/dict/sh.dict
 autocmd filetype vim set dictionary=$HOME/.vim/dict/vim.dict
+autocmd filetype xml set dictionary=$HOME/.vim/dict/xml.dict
 
 "}}}
 
